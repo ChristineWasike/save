@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:save/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
+
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
-  final AuthService _auth = AuthService();
+class _RegisterState extends State<Register> {
+   final AuthService _auth = AuthService();
    // text field state
   String email = '';
   String password = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.brown[300],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[600],
-        title: Text("Sign in to Save"),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.brown[600],
+      //   title: Text("Sign up to Save"),
+      // ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
          child: Form(
           child: Column(
             children: <Widget>[
+              SizedBox(height: 20.0),
+              Text('Sign up'),
               SizedBox(height: 20.0),
               TextFormField(
                 onChanged: (val) {
@@ -42,7 +44,7 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 color: Colors.brown[700],
                 child: Text(
-                  'Sign In',
+                  'Register',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
