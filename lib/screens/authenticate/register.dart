@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:save/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+
   // text field state
   String email = '';
   String password = '';
@@ -19,17 +21,21 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.brown[300],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[600],
-        title: Text("Sign in to Save"),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.brown[600],
+      //   title: Text("Sign up to Save"),
+      // ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
+              Text('Sign up'),
+              SizedBox(height: 20.0),
               TextFormField(
+                validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() => email = val);
                 },
@@ -37,6 +43,8 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20.0),
               TextFormField(
                 obscureText: true,
+                validator: (val) =>
+                    val.length < 6 ? 'Enter a password 6+ chars long' : null,
                 onChanged: (val) {
                   setState(() => password = val);
                 },
@@ -45,17 +53,19 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                   color: Colors.brown[700],
                   child: Text(
-                    'Sign In',
+                    'Register',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () async {
-                    print(email);
-                    print(password);
+                    if (_formKey.currentState.validate()) {
+                      print(email);
+                      print(password);
+                    } else {}
                   }),
               SizedBox(height: 20.0),
               TextButton.icon(
                 icon: Icon(Icons.person),
-                label: Text("Register"),
+                label: Text("Sign in"),
                 onPressed: () {
                   widget.toggleView();
                 },
