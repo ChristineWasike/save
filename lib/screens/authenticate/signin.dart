@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:save/services/auth.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
+
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
-   // text field state
+  // text field state
   String email = '';
   String password = '';
 
@@ -22,7 +25,7 @@ class _SignInState extends State<SignIn> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-         child: Form(
+        child: Form(
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
@@ -40,15 +43,22 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.brown[700],
-                child: Text(
-                  'Sign In',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  print(email);
-                  print(password);
-                }
+                  color: Colors.brown[700],
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    print(email);
+                    print(password);
+                  }),
+              SizedBox(height: 20.0),
+              TextButton.icon(
+                icon: Icon(Icons.person),
+                label: Text("Register"),
+                onPressed: () {
+                  widget.toggleView();
+                },
               ),
             ],
           ),
