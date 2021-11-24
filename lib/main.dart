@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
  
 import 'package:flutter/material.dart';
+import 'package:save/screens/auth-screens/signin.dart';
 import 'package:save/screens/landingpage.dart';
  
 void main() => runApp(SaveApp());
@@ -13,7 +14,7 @@ class SaveApp extends StatelessWidget {
    return MaterialApp(
      title: 'Saving App',
      debugShowCheckedModeBanner: false,
-     home: LandingPage(),
+     home: SignIn(), 
    );
  }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:save/screens/auth-screens/reset.dart';
 import 'package:save/screens/auth-screens/signin.dart';
 import 'package:save/screens/homepage.dart';
  
@@ -118,6 +117,7 @@ class SignUp extends StatelessWidget {
                      },
                      child: Text(
                        'Already have an account',
+                       textAlign: TextAlign.center,
                        style: TextStyle(
                            color: Colors.amber[700],
                            fontSize: 11.0,
@@ -126,23 +126,6 @@ class SignUp extends StatelessWidget {
                    ),
                    SizedBox(
                      width: 20,
-                   ),
- 
-                   // forgot password
-                   TextButton(
-                     onPressed: () {
-                       Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (context) => ResetPassword()));
-                     },
-                     child: Text(
-                       'Forgot Password?',
-                       style: TextStyle(
-                           color: Colors.grey,
-                           fontSize: 11.0,
-                           fontWeight: FontWeight.bold),
-                     ),
                    ),
                  ],
                ),
