@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
  
 import 'package:flutter/material.dart';
+import 'package:save/screens/auth-screens/securitypin.dart';
 import 'package:save/screens/auth-screens/signup.dart';
 import 'package:save/screens/homepage.dart';
  
@@ -55,7 +56,7 @@ class SignIn extends StatelessWidget {
                  child: RaisedButton(
                    onPressed: () {
                      Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => HomePage()));
+                         MaterialPageRoute(builder: (context) => SecurityPin()));
                    },
                    textColor: Colors.white,
                    color: Colors.amber[700],

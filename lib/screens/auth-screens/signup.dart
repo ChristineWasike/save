@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:save/screens/auth-screens/Numpad.dart';
 import 'package:save/screens/auth-screens/signin.dart';
 import 'package:save/screens/homepage.dart';
  
@@ -83,7 +84,7 @@ class SignUp extends StatelessWidget {
                  child: RaisedButton(
                    onPressed: () {
                      Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => HomePage()));
+                         MaterialPageRoute(builder: (context) => NumPad()));
                    },
                    textColor: Colors.white,
                    color: Colors.amber[700],
