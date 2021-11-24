@@ -36,7 +36,8 @@ class AuthService {
           email: email, password: password);
       FirebaseUser user = result.user;
       // creating a nwe document for the user with the uid
-      await DatabaseService(uid: user.uid).updateUserData(0.0, 0000);
+      await DatabaseService(uid: user.uid)
+          .updateUserData(firstName, lastName, email, password, 0.0, 0000);
 
       return _userFromFirebaseUser(user);
     } catch (e) {
