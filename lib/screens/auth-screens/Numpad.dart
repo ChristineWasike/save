@@ -17,6 +17,33 @@ class NumPad extends StatelessWidget {
                 'Enter your pin number',
                 style: TextStyle(fontSize: 20.0),
               ),
+              SizedBox(height: 30,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  padButton('1'),
+                  padButton('1'),
+                  padButton('1'),
+                ],
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  padButton('1'),
+                  padButton('1'),
+                  padButton('1'),
+                ],
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  padButton('1'),
+                  padButton('1'),
+                  padButton('1'),
+                ],
+              ),
               SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,6 +74,24 @@ class NumPad extends StatelessWidget {
         onPressed: (){},
         child: Center(
           child: Text(buttonText, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: 25),),
+        ),
+      ),
+    );
+  }
+  deleteButtonWidget(IconData icon, Function function){
+    return InkWell(
+      onTap: function,
+      child: Container(
+        height: buttonSize,
+        width: buttonSize,
+        decoration: BoxDecoration(
+          color: Colors.amber[700],
+          shape: BoxShape.circle
+        ),
+        child: Center(
+          child: Icon(icon,
+            size: 30,
+            color: Colors.white,),
         ),
       ),
     );
