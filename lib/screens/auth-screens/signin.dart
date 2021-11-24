@@ -50,7 +50,7 @@ class SignIn extends StatelessWidget {
                // Sign In
                Container(
                  width: 250,
-                 height: 35,
+                 height: 40,
                  // ignore: deprecated_member_use
                  child: RaisedButton(
                    onPressed: () {
@@ -75,25 +75,27 @@ class SignIn extends StatelessWidget {
                ),
  
                SizedBox(
-                 height: 10,
+                 height: 15,
                ),
  
                // create account
-               Row(
+               Column(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: <Widget>[
-                   TextButton(
-                     onPressed: () {
-                       Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => SignUp()));
-                     },
-                     child: Text(
-                       'Create Account',
-                       textAlign: TextAlign.center,
-                       style: TextStyle(
-                           color: Colors.grey,
-                           fontSize: 11.0,
-                           fontWeight: FontWeight.normal),
+                   Center(
+                     child: TextButton(
+                       onPressed: () {
+                         Navigator.push(context,
+                             MaterialPageRoute(builder: (context) => SignUp()));
+                       },
+                       child: Text(
+                         'Create Account',
+                         textAlign: TextAlign.center,
+                         style: TextStyle(
+                             color: Colors.grey,
+                             fontSize: 12.0,
+                             fontWeight: FontWeight.normal),
+                       ),
                      ),
                    ),
                    

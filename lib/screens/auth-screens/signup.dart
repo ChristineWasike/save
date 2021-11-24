@@ -107,21 +107,23 @@ class SignUp extends StatelessWidget {
                ),
  
                // create account
-               Row(
+               Column(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: <Widget>[
-                   TextButton(
-                     onPressed: () {
-                       Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => SignIn()));
-                     },
-                     child: Text(
-                       'Already have an account',
-                       textAlign: TextAlign.center,
-                       style: TextStyle(
-                           color: Colors.amber[700],
-                           fontSize: 11.0,
-                           fontWeight: FontWeight.bold),
+                   Center(
+                     child: TextButton(
+                       onPressed: () {
+                         Navigator.push(context,
+                             MaterialPageRoute(builder: (context) => SignIn()));
+                       },
+                       child: Text(
+                         'Already have an account',
+                         textAlign: TextAlign.center,
+                         style: TextStyle(
+                             color: Colors.grey,
+                             fontSize: 12.0,
+                             fontWeight: FontWeight.normal),
+                       ),
                      ),
                    ),
                    SizedBox(

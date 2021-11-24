@@ -2,7 +2,6 @@
  
 import 'package:flutter/material.dart';
 import 'package:save/screens/auth-screens/signin.dart';
-import 'package:save/screens/landingpage.dart';
  
 void main() => runApp(SaveApp());
  
