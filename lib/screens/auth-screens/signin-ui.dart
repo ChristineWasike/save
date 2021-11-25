@@ -10,7 +10,7 @@ class SignIn extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 150),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
           // Container for sign in form
           child: Container(
             padding: EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
