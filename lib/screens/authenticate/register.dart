@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:save/screens/authenticate/pin/confirm_pin.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/shared/constants.dart';
 import 'package:save/shared/loading.dart';
@@ -140,6 +141,7 @@ class _RegisterState extends State<Register> {
                                   await _auth.registerWithEmailAndPassword(
                                       firstName, lastName, email, password);
                               // TODO: Call SetupPin page
+                              SetupPin();
                               if (result == null) {
                                 setState(() {
                                   error = 'please supply a valid email';
