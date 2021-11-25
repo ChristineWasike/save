@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,
