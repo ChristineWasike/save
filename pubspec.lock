@@ -50,6 +50,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+<<<<<<< Updated upstream
+=======
+  convert:
+    dependency: transitive
+    description:
+      name: convert
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
+>>>>>>> Stashed changes
   crypto:
     dependency: transitive
     description:
@@ -358,5 +368,10 @@ packages:
     source: hosted
     version: "0.2.0"
 sdks:
+<<<<<<< Updated upstream
   dart: ">=2.14.0 <3.0.0"
   flutter: ">=2.5.0"
+=======
+  dart: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+>>>>>>> Stashed changes
