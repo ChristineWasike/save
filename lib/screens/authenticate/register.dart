@@ -129,7 +129,7 @@ class _RegisterState extends State<Register> {
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
                             child: const Text(
-                              'Sign In',
+                              'Sign Up',
                               style: TextStyle(fontSize: 16),
                             ),
                           ),
@@ -139,6 +139,7 @@ class _RegisterState extends State<Register> {
                               dynamic result =
                                   await _auth.registerWithEmailAndPassword(
                                       firstName, lastName, email, password);
+                              // TODO: Call SetupPin page
                               if (result == null) {
                                 setState(() {
                                   error = 'please supply a valid email';

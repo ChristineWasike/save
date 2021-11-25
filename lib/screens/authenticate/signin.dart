@@ -99,7 +99,7 @@ class _SignInState extends State<SignIn> {
                               setState(() => loading = true);
                               dynamic result = await _auth
                                   .signInWithEmailAndPassword(email, password);
-
+                              // TODO: Call Enter pin
                               if (result == null) {
                                 setState(() {
                                   error =
