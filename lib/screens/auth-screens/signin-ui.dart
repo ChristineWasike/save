@@ -1,8 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:save/screens/auth-screens/signin-ui.dart';
+import 'package:save/screens/auth-screens/signup.dart';
 import 'package:save/screens/homepage.dart';
 
-class SignUp extends StatelessWidget {
+class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,21 +16,6 @@ class SignUp extends StatelessWidget {
             padding: EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
-                // first text field "Name"
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Name',
-                      labelStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.amber[700],
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white))),
-                ),
-                // create space between the textfields
-                SizedBox(
-                  height: 20.0,
-                ),
                 // first text field "Email"
                 TextField(
                   decoration: InputDecoration(
@@ -57,27 +44,12 @@ class SignUp extends StatelessWidget {
                   obscureText: true,
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 40.0,
                 ),
-                // second "Password"
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      labelStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.amber[700],
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white))),
-                  obscureText: true,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                // Sign up
+                // Sign In
                 Container(
                   width: 250,
-                  height: 35,
+                  height: 40,
                   // ignore: deprecated_member_use
                   child: RaisedButton(
                     onPressed: () {
@@ -94,15 +66,15 @@ class SignUp extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       child: const Text(
-                        'Sign up',
-                        style: TextStyle(fontSize: 12),
+                        'Sign In',
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
                 ),
 
                 SizedBox(
-                  height: 8,
+                  height: 15,
                 ),
 
                 // create account
@@ -115,10 +87,10 @@ class SignUp extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignIn()));
+                                  builder: (context) => SignUp()));
                         },
                         child: Text(
-                          'Already have an account',
+                          'Create Account',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.grey,
@@ -126,9 +98,6 @@ class SignUp extends StatelessWidget {
                               fontWeight: FontWeight.normal),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 20,
                     ),
                   ],
                 ),
