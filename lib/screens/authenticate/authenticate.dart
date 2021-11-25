@@ -13,6 +13,7 @@ class _AuthenticateState extends State<Authenticate> {
     setState(() => showSignIn = !showSignIn);
   }
 
+  // Deciding on whether to display Sign In or SignUp
   @override
   Widget build(BuildContext context) {
     if (showSignIn) {

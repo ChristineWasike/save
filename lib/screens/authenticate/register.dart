@@ -4,6 +4,7 @@ import 'package:save/shared/constants.dart';
 import 'package:save/shared/loading.dart';
 
 class Register extends StatefulWidget {
+  //TODO Cut and Paste to Onboarding widget
   final Function toggleView;
   Register({this.toggleView});
 
