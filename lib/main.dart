@@ -19,9 +19,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          // TODO: There is an error here figure it out and fix it
           // This is the theme of the application.
-          scaffoldBackgroundColor: KBackgroundColor,
-          primaryColor: KPrimaryColor,
+          // scaffoldBackgroundColor: KBackgroundColor,
+          // primaryColor: KPrimaryColor,
           textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,
           ),

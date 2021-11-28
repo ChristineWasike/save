@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w800,
-                            color: KTextColor)),
+                            color: Colors.black)),
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration: InputDecoration(
