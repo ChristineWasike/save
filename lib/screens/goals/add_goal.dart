@@ -7,7 +7,6 @@ class AddGoal extends StatefulWidget {
 
 class _AddGoalState extends State<AddGoal> {
   final _formKey = GlobalKey<FormState>();
-  var _categoryOptions = ["Cat 1", "Cat 2", "Cat 3", "Cat 4", "Cat 5", "Cat 6"];
   var _currentSelectedValue;
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,18 @@ class _AddGoalState extends State<AddGoal> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Center(child: Text("Add a new Goal")),
-        leading: Icon(Icons.arrow_back),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Center(
+          child: Text(
+            "Add a new Goal",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        leading: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
@@ -56,7 +65,7 @@ class _AddGoalState extends State<AddGoal> {
                         _currentSelectedValue = newValue;
                       });
                     },
-                    items: <String>["Cat 1", "Cat 2", "Cat 3"]
+                    items: <String>["Tech Devices", "School", "Piggy bank"]
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -128,7 +137,7 @@ class _AddGoalState extends State<AddGoal> {
                         _currentSelectedValue = newValue;
                       });
                     },
-                    items: <String>["Cat 1", "Cat 2", "Cat 3"]
+                    items: <String>["Bi-weekly", "Monthly"]
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
