@@ -22,9 +22,10 @@ class _AddGoalState extends State<AddGoal> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        leading: Icon(
-          Icons.arrow_back,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
           color: Colors.black,
+          onPressed: () {},
         ),
       ),
       body: Container(
@@ -181,7 +182,7 @@ class _AddGoalState extends State<AddGoal> {
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
-                    onPressed: () async {}),
+                    onPressed: () {}),
               ),
             ],
           ),

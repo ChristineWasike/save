@@ -6,6 +6,7 @@ import 'package:save/models/user.dart';
 import 'package:save/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:save/services/auth.dart';
+import 'package:save/shared/constants.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,9 +19,17 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        )),
+          // This is the theme of the application.
+          scaffoldBackgroundColor: KBackgroundColor,
+          primaryColor: KPrimaryColor,
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
+          // This makes the visual density adapt to the platform that you run
+          // the app on. For desktop platforms, the controls will be smaller and
+          // closer together (more dense) than on mobile platforms.
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
         home: Wrapper(),
       ),
     );
