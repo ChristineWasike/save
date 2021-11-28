@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: Colors.white,
+            resizeToAvoidBottomInset: false,
             body: Container(
               padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
               child: Form(
@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w800,
-                            color: Colors.black)),
+                            color: KTextColor)),
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration: InputDecoration(
