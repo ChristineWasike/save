@@ -28,7 +28,8 @@ class Home extends StatelessWidget {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  AddGoal();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddGoal()));
                 },
                 textColor: Colors.white,
                 color: Colors.amber[700],

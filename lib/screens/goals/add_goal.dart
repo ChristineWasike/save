@@ -1,8 +1,183 @@
 import 'package:flutter/material.dart';
 
-class AddGoal extends StatelessWidget {
+class AddGoal extends StatefulWidget {
+  @override
+  State<AddGoal> createState() => _AddGoalState();
+}
+
+class _AddGoalState extends State<AddGoal> {
+  final _formKey = GlobalKey<FormState>();
+  var _categoryOptions = ["Cat 1", "Cat 2", "Cat 3", "Cat 4", "Cat 5", "Cat 6"];
+  var _currentSelectedValue;
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Center(child: Text("Add a new Goal")),
+        leading: Icon(Icons.arrow_back),
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 10.0,
+              ),
+              InputDecorator(
+                decoration: InputDecoration(
+                  labelText: 'Goal Category',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey,
+                  ),
+                  errorStyle: TextStyle(
+                    color: Colors.redAccent,
+                    fontSize: 16.0,
+                  ),
+                  hintText: 'Please select a category',
+                  // border: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(5.0),
+                  // ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber[700]),
+                  ),
+                ),
+                isEmpty: _currentSelectedValue == '',
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _currentSelectedValue,
+                    isDense: true,
+                    onChanged: (String newValue) {
+                      setState(() {
+                        _currentSelectedValue = newValue;
+                      });
+                    },
+                    items: <String>["Cat 1", "Cat 2", "Cat 3"]
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Goal Title',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber[700]),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Saving Goal',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber[700]),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              InputDecorator(
+                decoration: InputDecoration(
+                  labelText: 'How often will you save',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey,
+                  ),
+                  errorStyle: TextStyle(
+                    color: Colors.redAccent,
+                    fontSize: 16.0,
+                  ),
+                  hintText: 'Please select how often will you save',
+                  // border: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(5.0),
+                  // ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber[700]),
+                  ),
+                ),
+                isEmpty: _currentSelectedValue == '',
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _currentSelectedValue,
+                    isDense: true,
+                    onChanged: (String newValue) {
+                      setState(() {
+                        _currentSelectedValue = newValue;
+                      });
+                    },
+                    items: <String>["Cat 1", "Cat 2", "Cat 3"]
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'How much will you save',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber[700]),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30.0),
+              Container(
+                width: 250,
+                height: 40,
+                child: RaisedButton(
+                    textColor: Colors.white,
+                    color: Colors.amber[700],
+                    padding: const EdgeInsets.all(0.0),
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Text(
+                        'Add Goal',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    onPressed: () async {}),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
