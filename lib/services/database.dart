@@ -9,7 +9,7 @@ class DatabaseService {
 
   Future updateUserData(String firstName, String lastName, String email,
       String password, double accountBalance, int pin) async {
-    return await userCollection.document(uid).setData({
+    return await userCollection.document(uid).setData(<String, dynamic>{
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
