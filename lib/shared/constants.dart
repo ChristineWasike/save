@@ -11,3 +11,13 @@ const textInputDecoration = InputDecoration(
     borderSide: BorderSide(color: Colors.brown, width: 2.0),
   ),
 );
+
+// Standard colors
+Color KPrimaryColor = Color(0xFFA000);
+Color KTextColor = Color(0xFF3C40460);
+Color KBackgroundColor = Color(0xFFF9F8FD);
+
+Color deepAmber = Color(0);
+Color lightAmber = Color(0);
+Color grey = Color(0xffc4c4c4);
+Color black = Color(0);
