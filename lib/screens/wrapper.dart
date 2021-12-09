@@ -16,6 +16,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     } else {
+      // Change to the setup pin/enter pin
       return Home();
     }
     
