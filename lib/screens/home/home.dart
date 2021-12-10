@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:save/screens/goals/add_goal.dart';
+import 'package:save/screens/home/goal_list.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                // AccountList(),
+                GoalList(),
               ],
             ),
           ),

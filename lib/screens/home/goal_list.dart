@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
-class AccountList extends StatefulWidget {
+class GoalList extends StatefulWidget {
   @override
-  _AccountListState createState() => _AccountListState();
+  _GoalListState createState() => _GoalListState();
 }
 
-class _AccountListState extends State<AccountList> {
+class _GoalListState extends State<GoalList> {
   @override
   Widget build(BuildContext context) {
     final accounts = Provider.of<QuerySnapshot>(context);
