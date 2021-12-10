@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:save/services/auth.dart';
+import 'package:save/services/database.dart';
 
 class AddGoal extends StatefulWidget {
   @override
@@ -182,7 +184,9 @@ class _AddGoalState extends State<AddGoal> {
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
-                    onPressed: () {}),
+                    onPressed: () async{
+                      // await _auth.user;
+                    }),
               ),
             ],
           ),

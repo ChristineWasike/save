@@ -26,7 +26,7 @@ class DatabaseService {
   // Creating a goal
   Future createGoal(String category, String title, int goal, String frequency,
       int amount, int currentBalance, int amountDeposited) async {
-    return await goalCollection.document().setData(<String, dynamic>{
+    return await goalCollection.document(uid).collection('user_goals').add(<String, dynamic>{
       'category': category,
       'title': title,
       'goal': goal,
@@ -36,9 +36,7 @@ class DatabaseService {
       'amountDeposited': amountDeposited,
       // timestamp field to track most recent change to currentBalance
       // the timestamp, currentBalance and goal id- Timestamp collection/table
-      'user': {
-        'uid': uid,
-      }
+     
     });
   }
 

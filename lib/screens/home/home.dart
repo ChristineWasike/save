@@ -4,7 +4,7 @@ import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:save/screens/home/account_list.dart';
+// import 'package:save/screens/home/account_list.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -33,7 +33,8 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {
+                  onPressed: (){
+                    
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => AddGoal()));
                   },
@@ -52,7 +53,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                AccountList(),
+                // AccountList(),
               ],
             ),
           ),

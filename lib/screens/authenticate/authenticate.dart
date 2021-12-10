@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:save/screens/authenticate/register.dart';
 import 'package:save/screens/authenticate/signin.dart';
+// import '../onboarding/onboard.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -22,7 +23,8 @@ class _AuthenticateState extends State<Authenticate> {
       );
     } else {
       return Container(
-        child: Register(toggleView: toggleView),
+        child: Register(toggleView: toggleView)
+        // child: Register(toggleView: toggleView),
       );
     }
   }
