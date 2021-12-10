@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:save/models/account.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/goal_list.dart';
 import 'package:save/services/auth.dart';
@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Account>>.value(
       value: DatabaseService().users,
       child: Scaffold(
         backgroundColor: Colors.grey[50],

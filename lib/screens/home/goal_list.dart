@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+import 'package:save/models/account.dart';
 
 class GoalList extends StatefulWidget {
   @override
@@ -8,14 +8,17 @@ class GoalList extends StatefulWidget {
 }
 
 class _GoalListState extends State<GoalList> {
+  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    final accounts = Provider.of<QuerySnapshot>(context);
+    final accounts = Provider.of<List<Account>>(context);
     // print(accounts.documents);
 
-    for (var doc in accounts.documents) {
-      print(doc.data);
-    }
+    accounts.forEach((account) {
+      print(account.firstName);
+      print(account.lastName);
+      print(account.accountBalance);
+    });
 
     return Container();
   }

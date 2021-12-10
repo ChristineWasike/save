@@ -71,5 +71,8 @@ class AuthService {
     }
   }
 
-
+  Future createNewGoal(String category, String title, int goal, String frequency,
+      int amount, int currentBalance, int amountDeposited) {
+        return await si
+  }
 }
