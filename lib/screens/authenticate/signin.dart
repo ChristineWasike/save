@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:save/screens/authenticate/pin/enter_pin.dart';
 import 'package:save/services/auth.dart';
-import 'package:save/shared/constants.dart';
 import 'package:save/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
