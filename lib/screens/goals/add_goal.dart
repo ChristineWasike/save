@@ -222,7 +222,8 @@ class _AddGoalState extends State<AddGoal> {
                         ),
                       ),
                       onPressed: () async {
-                        DatabaseService(uid: user.uid).createGoal(category, title, goal, frequency, amount, currentBalance);
+                        DatabaseService(uid: user.uid).createGoal(category,
+                            title, goal, frequency, amount, currentBalance);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Home()));
                       }),
