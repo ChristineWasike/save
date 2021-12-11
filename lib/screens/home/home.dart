@@ -48,7 +48,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
+        color: Colors.yellow,
+        // gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
       ),
       child: BottomAppBar(
         elevation: 0,
