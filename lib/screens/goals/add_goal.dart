@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:save/models/account.dart';
+import 'package:save/models/goal.dart';
 import 'package:save/models/user.dart';
 import 'package:save/screens/home/home.dart';
-import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +26,8 @@ class _AddGoalState extends State<AddGoal> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     print(user);
-    return StreamProvider<List<Account>>.value(
-      value: DatabaseService().users,
+    return StreamProvider<List<Goal>>.value(
+      value: DatabaseService().goals,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,

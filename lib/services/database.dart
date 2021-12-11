@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:save/models/account.dart';
+import 'package:save/models/goal.dart';
 
 class DatabaseService {
   final String uid;
@@ -10,6 +10,9 @@ class DatabaseService {
 
   final CollectionReference goalCollection =
       Firestore.instance.collection('goals');
+
+  final CollectionReference depositCollection =
+      Firestore.instance.collection('deposits');
 
   // Setting up a user
   Future updateUserData(String firstName, String lastName, String email,
@@ -36,37 +39,30 @@ class DatabaseService {
       'amount': amount,
       'currentBalance':
           currentBalance, // incremenent by amount deposited - $200, $20
-      // 'amountDeposited': amountDeposited,
-      // timestamp field to track most recent change to currentBalance
-      // the timestamp, currentBalance and goal id- Timestamp collection/table
     });
   }
 
   // Collection Desposits - Date, Amount, Goal_id
+  Future createDeposit(DateTime date, int amount, String goalId) async {
+    return await depositCollection.document().setData(
+        <String, dynamic>{'date': date, 'amount': amount, 'goalId': goalId});
+  }
 
-  Future createDeposit(String date, int amount) {}
-
-  // Get Accounts
-  List<Account> _accountListFromSnapshot(QuerySnapshot snapshot) {
+  List<Goal> _goalListFromSnapShot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
-      return Account(
-        firstName: doc.data['firstName'] ?? '',
-        lastName: doc.data['lastName'] ?? '',
-        password: doc.data['password'] ?? '',
-        pin: doc.data['pin'] ?? 0,
-        accountBalance: doc.data['accountBalance'] ?? 0.0,
-        email: doc.data['email'] ?? '',
-      );
+      return Goal(
+          userId: doc.data['user_id'] ?? '',
+          category: doc.data['category'] ?? '',
+          title: doc.data['title'] ?? '',
+          goal: doc.data['goal'] ?? 0,
+          frequency: doc.data['frequency'] ?? '',
+          amount: doc.data['amount'] ?? 0,
+          currentBalance: doc.data['currentBalance'] ?? 0);
     }).toList();
   }
 
-  // Get users stream
-  Stream<List<Account>> get users {
-    return userCollection.snapshots().map(_accountListFromSnapshot);
-  }
-
   // Get Goals
-  Stream<QuerySnapshot> get goals {
-    return userCollection.snapshots();
+  Stream<List<Goal>> get goals {
+    return goalCollection.snapshots().map(_goalListFromSnapShot);
   }
 }

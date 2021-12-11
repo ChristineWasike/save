@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:save/models/account.dart';
-import 'package:save/screens/goals/add_goal.dart';
+import 'package:save/models/goal.dart';
+// import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/goal_list.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
-// import 'package:save/screens/home/account_list.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<Account>>.value(
-      value: DatabaseService().users,
+    return StreamProvider<List<Goal>>.value(
+      value: DatabaseService().goals,
       child: Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
@@ -28,36 +27,35 @@ class Home extends StatelessWidget {
           ],
         ),
         body: Center(
-          // child: GoalList(),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: (){
-                    
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddGoal()));
-                  },
-                  textColor: Colors.white,
-                  color: Colors.amber[700],
-                  padding: const EdgeInsets.all(0.0),
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Text(
-                      'Add New Goal',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          child: GoalList(),
+          // child: Padding(
+          //   padding: const EdgeInsets.all(20.0),
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: <Widget>[
+          //       RaisedButton(
+          //         onPressed: () {
+          //           Navigator.push(context,
+          //               MaterialPageRoute(builder: (context) => AddGoal()));
+          //         },
+          //         textColor: Colors.white,
+          //         color: Colors.amber[700],
+          //         padding: const EdgeInsets.all(0.0),
+          //         elevation: 5.0,
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(15),
+          //         ),
+          //         child: Container(
+          //           padding: const EdgeInsets.all(8.0),
+          //           child: const Text(
+          //             'Add New Goal',
+          //             style: TextStyle(fontSize: 16),
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ),
       ),
     );

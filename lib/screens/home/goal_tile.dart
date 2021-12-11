@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:save/models/account.dart';
+import 'package:save/models/goal.dart';
 
-class AccountTile extends StatelessWidget {
-  final Account account;
-  AccountTile({this.account});
+class GoalTile extends StatelessWidget {
+  final Goal goal;
+  GoalTile({this.goal});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +14,11 @@ class AccountTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.yellow[account.accountBalance],
+            backgroundColor: Colors.yellow[goal.goal],
           ),
-          title: Text(account.firstName),
+          title: Text(goal.title),
           subtitle: Text(
-            account.accountBalance.toString(),
+            goal.category,
           ),
         ),
       ),
