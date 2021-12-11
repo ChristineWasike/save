@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:save/screens/goals/add_goal.dart';
+import 'package:save/screens/home/components/goals.dart';
 import 'package:save/services/auth.dart';
 
 class Home extends StatefulWidget {
@@ -7,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // TODO: Create an array that calls the different screens
   final AuthService _auth = AuthService();
 
   @override
@@ -25,7 +28,9 @@ class _HomeState extends State<Home> {
               }),
         ],
       ),
-      body: Container(),
+      body: Container(
+        child: GoalButton(),
+      ),
       bottomNavigationBar: BottomNavBar(),
     );
   }
@@ -38,6 +43,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,6 +78,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   onPressed: () {
                     setState(() {
                       _selectedIndex = 1;
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AddGoal()));
                     });
                   },
                 ),
@@ -88,10 +96,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 IconBottomBar(
                   text: "Settings",
                   icon: Icons.settings,
-                  selected: _selectedIndex == 2,
+                  selected: _selectedIndex == 3,
                   onPressed: () {
                     setState(() {
-                      _selectedIndex = 2;
+                      _selectedIndex = 3;
                     });
                   },
                 ),
