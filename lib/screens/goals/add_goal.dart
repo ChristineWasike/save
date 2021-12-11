@@ -14,12 +14,16 @@ class _AddGoalState extends State<AddGoal> {
   final _formKey = GlobalKey<FormState>();
 
   // Added the variables to collect the goal fields
-  String category = 'piggy bank';
+  // String category = '';
   String title = '';
   int goal = 0;
   String frequency = 'bi-weekly';
   int amount = 0;
   int currentBalance = 0;
+
+  final List<String> categories = ["Tech Devices", "School", "Piggy bank"];
+
+  String _currentCategory;
   var _currentSelectedValue;
 
   @override
@@ -79,18 +83,14 @@ class _AddGoalState extends State<AddGoal> {
                   isEmpty: _currentSelectedValue == '',
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      value: _currentSelectedValue,
+                      value: _currentCategory,
                       isDense: true,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          _currentSelectedValue = newValue;
-                        });
-                      },
-                      items: <String>["Tech Devices", "School", "Piggy bank"]
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
+                      onChanged: (val) =>
+                          setState(() => _currentCategory = val),
+                      items: categories.map((category) {
+                        return DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
                         );
                       }).toList(),
                     ),
@@ -221,8 +221,13 @@ class _AddGoalState extends State<AddGoal> {
                         ),
                       ),
                       onPressed: () async {
-                        DatabaseService(uid: user.uid).createGoal(category,
-                            title, goal, frequency, amount, currentBalance);
+                        DatabaseService(uid: user.uid).createGoal(
+                            _currentCategory,
+                            title,
+                            goal,
+                            frequency,
+                            amount,
+                            currentBalance);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Home()));
                       }),
