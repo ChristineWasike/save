@@ -26,7 +26,7 @@ class DatabaseService {
 
   // Creating a goal
   Future createGoal(String category, String title, int goal, String frequency,
-      int amount, int currentBalance, int amountDeposited) async {
+      int amount, int currentBalance) async {
     return await goalCollection.document().setData(<String, dynamic>{
       'user_id': uid, // User Id
       'category': category,

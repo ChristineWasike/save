@@ -13,9 +13,16 @@ class AddGoal extends StatefulWidget {
 
 class _AddGoalState extends State<AddGoal> {
   final _formKey = GlobalKey<FormState>();
-  String category = '';
-  String password = '';
+
+  // Added the variables to collect the goal fields
+  String category = 'piggy bank';
+  String title = '';
+  int goal = 0;
+  String frequency = 'bi-weekly';
+  int amount = 0;
+  int currentBalance = 0;
   var _currentSelectedValue;
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -49,6 +56,8 @@ class _AddGoalState extends State<AddGoal> {
                 SizedBox(
                   height: 10.0,
                 ),
+
+                // Category Input Field
                 InputDecorator(
                   decoration: InputDecoration(
                     labelText: 'Goal Category',
@@ -91,6 +100,8 @@ class _AddGoalState extends State<AddGoal> {
                 SizedBox(
                   height: 20.0,
                 ),
+
+                // Title
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Goal Title',
@@ -102,10 +113,15 @@ class _AddGoalState extends State<AddGoal> {
                       borderSide: BorderSide(color: Colors.amber[700]),
                     ),
                   ),
+                  onChanged: (val) {
+                    setState(() => title = val);
+                  },
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
+
+                // Goal
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Saving Goal',
@@ -117,10 +133,15 @@ class _AddGoalState extends State<AddGoal> {
                       borderSide: BorderSide(color: Colors.amber[700]),
                     ),
                   ),
+                  onChanged: (val) {
+                    setState(() => goal = int.parse(val));
+                  },
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
+
+                // Frequency
                 InputDecorator(
                   decoration: InputDecoration(
                     labelText: 'How often will you save',
@@ -148,6 +169,7 @@ class _AddGoalState extends State<AddGoal> {
                       onChanged: (String newValue) {
                         setState(() {
                           _currentSelectedValue = newValue;
+                          frequency = newValue;
                         });
                       },
                       items: <String>["Bi-weekly", "Monthly"]
@@ -163,6 +185,8 @@ class _AddGoalState extends State<AddGoal> {
                 SizedBox(
                   height: 20.0,
                 ),
+
+                // Amount per frequency
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'How much will you save',
@@ -174,6 +198,9 @@ class _AddGoalState extends State<AddGoal> {
                       borderSide: BorderSide(color: Colors.amber[700]),
                     ),
                   ),
+                  onChanged: (val) {
+                    setState(() => amount = int.parse(val));
+                  },
                 ),
                 SizedBox(height: 30.0),
                 Container(
@@ -195,7 +222,7 @@ class _AddGoalState extends State<AddGoal> {
                         ),
                       ),
                       onPressed: () async {
-                        // DatabaseService(uid: user.uid).createGoal(category, title, goal, frequency, amount, currentBalance, amountDeposited);
+                        DatabaseService(uid: user.uid).createGoal(category, title, goal, frequency, amount, currentBalance);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Home()));
                       }),
