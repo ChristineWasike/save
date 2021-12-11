@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
           ],
         ),
         body: Center(
+          // child: GoalList(),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -54,7 +55,6 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                GoalList(),
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:save/models/account.dart';
+import 'package:save/screens/home/account_tile.dart';
 
 class GoalList extends StatefulWidget {
   @override
@@ -12,14 +13,23 @@ class _GoalListState extends State<GoalList> {
   @override
   Widget build(BuildContext context) {
     final accounts = Provider.of<List<Account>>(context);
-    // print(accounts.documents);
 
-    accounts.forEach((account) {
-      print(account.firstName);
-      print(account.lastName);
-      print(account.accountBalance);
-    });
+    //   accounts.forEach((account) {
+    //     print(account.firstName);
+    //     print(account.lastName);
+    //     print(account.accountBalance);
+    //   });
 
-    return Container();
+    //   print(accounts.length);
+    //   return Container();
+    // }
+
+  print(accounts.length);
+    return ListView.builder(
+      itemCount: accounts.length,
+      itemBuilder: (context, index) {
+        return AccountTile(account: accounts[index]);
+      },
+    );
   }
 }

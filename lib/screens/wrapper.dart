@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:save/models/user.dart';
 // import 'package:save/screens/home/home.dart';
-import 'package:save/screens/authenticate/authenticate.dart';
+// import 'package:save/screens/authenticate/authenticate.dart';
 import 'package:save/screens/onboarding/onboard.dart';
 
 import 'home/home.dart';

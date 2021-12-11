@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:save/models/account.dart';
+import 'package:save/models/user.dart';
+import 'package:save/screens/home/home.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
@@ -10,11 +12,14 @@ class AddGoal extends StatefulWidget {
 }
 
 class _AddGoalState extends State<AddGoal> {
-  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  String category = '';
+  String password = '';
   var _currentSelectedValue;
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+    print(user);
     return StreamProvider<List<Account>>.value(
       value: DatabaseService().users,
       child: Scaffold(
@@ -190,7 +195,9 @@ class _AddGoalState extends State<AddGoal> {
                         ),
                       ),
                       onPressed: () async {
-                        DatabaseService(uid: await _auth.user.);
+                        // DatabaseService(uid: user.uid).createGoal(category, title, goal, frequency, amount, currentBalance, amountDeposited);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Home()));
                       }),
                 ),
               ],

@@ -101,13 +101,15 @@ class _SignInState extends State<SignIn> {
                               dynamic result = await _auth
                                   .signInWithEmailAndPassword(email, password);
                               // TODO: Call Enter pin
-                              EnterPin();
+                              // EnterPin();
                               if (result == null) {
                                 setState(() {
                                   error =
                                       'could not sign in with those credentials';
                                   loading = false;
                                 });
+                              } else {
+                                setState(() {});
                               }
                             }
                           }),
