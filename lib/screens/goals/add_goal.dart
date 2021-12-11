@@ -8,9 +8,15 @@ class AddGoal extends StatefulWidget {
 }
 
 class _AddGoalState extends State<AddGoal> {
-  String dropDownValue;
-  List categories = ["School", "Technology Device", "Car", "Piggy Bank"];
-  List frequencyList = ["Bi-weekly", "Monthly"];
+  String _categoryValue;
+  String _frequencyValue;
+  List<String> categories = [
+    'School',
+    'Technology Device',
+    'Car',
+    'Piggy Bank'
+  ];
+  List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -34,7 +40,7 @@ class _AddGoalState extends State<AddGoal> {
           ),
           color: Colors.black,
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
                 context, MaterialPageRoute(builder: (context) => Home()));
           },
         ),
@@ -46,7 +52,41 @@ class _AddGoalState extends State<AddGoal> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                buildDropDown(categories),
+                InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Goal Category',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.grey,
+                    ),
+                    errorStyle: TextStyle(
+                      color: Colors.redAccent,
+                      fontSize: 16.0,
+                    ),
+                    hintText: 'Please select a category',
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(5.0),
+                    // ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.amber[700]),
+                    ),
+                  ),
+                  isEmpty: _categoryValue == '',
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: _categoryValue,
+                      isDense: true,
+                      onChanged: (val) => setState(() => _categoryValue = val),
+                      items: categories.map((category) {
+                        return DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                // buildDropDown(categories, _categoryValue),
                 SizedBox(height: 20.0),
                 TextFormField(
                   decoration: InputDecoration(
@@ -60,7 +100,9 @@ class _AddGoalState extends State<AddGoal> {
                     ),
                   ),
                 ),
+
                 SizedBox(height: 20.0),
+
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Saving Goal',
@@ -73,8 +115,44 @@ class _AddGoalState extends State<AddGoal> {
                     ),
                   ),
                 ),
+
                 SizedBox(height: 20.0),
-                buildDropDown(categories),
+
+                InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Saving Frequency',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.grey,
+                    ),
+                    errorStyle: TextStyle(
+                      color: Colors.redAccent,
+                      fontSize: 16.0,
+                    ),
+                    hintText: 'Please select a frequency',
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(5.0),
+                    // ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.amber[700]),
+                    ),
+                  ),
+                  isEmpty: _frequencyValue == '',
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: _frequencyValue,
+                      isDense: true,
+                      onChanged: (val) => setState(() => _frequencyValue = val),
+                      items: frequencies.map((frequency) {
+                        return DropdownMenuItem(
+                          value: frequency,
+                          child: Text(frequency),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                // buildDropDown(frequencies, _frequencyValue),
                 SizedBox(height: 20.0),
                 TextFormField(
                   decoration: InputDecoration(
@@ -88,7 +166,9 @@ class _AddGoalState extends State<AddGoal> {
                     ),
                   ),
                 ),
+
                 SizedBox(height: 40.0),
+
                 Container(
                   width: 250,
                   height: 40,
@@ -122,7 +202,7 @@ class _AddGoalState extends State<AddGoal> {
     );
   }
 
-  Padding buildDropDown(List listItem) {
+  Padding buildDropDown(List listItem, String dropDownValue) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -133,7 +213,6 @@ class _AddGoalState extends State<AddGoal> {
           iconSize: 36,
           isExpanded: true,
           style: TextStyle(
-            fontWeight: FontWeight.w700,
             color: Colors.grey,
             fontSize: 18,
           ),

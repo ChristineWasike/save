@@ -15,18 +15,28 @@ class GoalView extends StatelessWidget {
           ),
           color: Colors.black,
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
                 context, MaterialPageRoute(builder: (context) => Home()));
           },
         ),
       ),
       body: Container(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text("Goal Overview"),
-        ],
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Goal Overview",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+                letterSpacing: 1,
+              ),
+              textAlign: TextAlign.center,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
