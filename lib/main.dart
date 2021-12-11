@@ -6,7 +6,6 @@ import 'package:save/models/user.dart';
 import 'package:save/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:save/services/auth.dart';
-import 'package:save/shared/constants.dart';
 
 void main() => runApp(MyApp());
 

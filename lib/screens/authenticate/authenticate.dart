@@ -21,6 +21,7 @@ class _AuthenticateState extends State<Authenticate> {
       );
     } else {
       return Container(
+        // Add onboarding screens
         child: Register(toggleView: toggleView),
       );
     }
