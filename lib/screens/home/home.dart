@@ -69,11 +69,45 @@ class _HomeState extends State<Home> {
                   fontWeight: FontWeight.w100,
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Total Savings',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Rwf ',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 child: GoalButton(),
               ),
               SizedBox(
-                height: 5,
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
