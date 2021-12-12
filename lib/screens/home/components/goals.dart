@@ -18,7 +18,7 @@ class GoalButton extends StatelessWidget {
                 },
                 textColor: Colors.white,
                 color: Colors.amber[700],
-                padding: const EdgeInsets.all(0.0),
+                padding: const EdgeInsets.all(5.0),
                 elevation: 5.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -27,7 +27,7 @@ class GoalButton extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: const Text(
                     'Add New Goal',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 14),
                   ),
                 ),
               )

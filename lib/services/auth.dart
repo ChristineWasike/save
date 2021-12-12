@@ -35,8 +35,9 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      // creating a nwe document for the user with the uid
-      await DatabaseService(uid: user.uid).updateUserData(0.0, 0000);
+      // creating a new document for the user with the uid
+      await DatabaseService(uid: user.uid)
+          .updateUserData(firstName, lastName, email, password, 0.0, 0000);
 
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -68,5 +69,10 @@ class AuthService {
       print(e.toString);
       return null;
     }
+  }
+
+  Future createNewGoal(String category, String title, int goal,
+      String frequency, int amount, int currentBalance, int amountDeposited) {
+    // return await si
   }
 }

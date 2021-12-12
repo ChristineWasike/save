@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:save/models/goal.dart';
 import 'package:save/screens/home/home.dart';
 
-class GoalView extends StatelessWidget {
+class GoalView extends StatefulWidget {
+  final Goal goal;
+  GoalView({this.goal});
+  @override
+  State<GoalView> createState() => _GoalViewState();
+}
+
+class _GoalViewState extends State<GoalView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +42,7 @@ class GoalView extends StatelessWidget {
                         fontSize: 20.0,
                         fontWeight: FontWeight.w800,
                         color: Colors.black)),
-                Text('Goal Title',
+                Text(widget.goal.title,
                     style: TextStyle(fontSize: 20.0, color: Colors.black)),
               ],
             ),
@@ -44,8 +52,8 @@ class GoalView extends StatelessWidget {
               children: <Widget>[
                 Text('Goal Category : ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 50.0),
-                Text('Tech Device',
+                SizedBox(width: 30.0),
+                Text(widget.goal.category,
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
             ),
@@ -55,7 +63,7 @@ class GoalView extends StatelessWidget {
                 Text('Saving Goal : ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
                 SizedBox(width: 70.0),
-                Text('500,000 Rwf',
+                Text((widget.goal.goal.toString() + ' Rwf'),
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
             ),
@@ -107,7 +115,7 @@ class GoalView extends StatelessWidget {
                 Text('Current Balance: ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
                 SizedBox(width: 30.0),
-                Text('20,000 Rwf',
+                Text(widget.goal.currentBalance.toString() + ' Rwf',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
             ),
