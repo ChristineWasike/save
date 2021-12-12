@@ -255,7 +255,7 @@ class _AddGoalState extends State<AddGoal> {
                               frequency,
                               amount,
                               currentBalance);
-                          Navigator.push(context,
+                          Navigator.pop(context,
                               MaterialPageRoute(builder: (context) => Home()));
                         }),
                   ),
