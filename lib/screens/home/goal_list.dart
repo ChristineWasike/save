@@ -11,7 +11,7 @@ class GoalList extends StatefulWidget {
 class _GoalListState extends State<GoalList> {
   @override
   Widget build(BuildContext context) {
-    final goals = Provider.of<List<Goal>>(context);
+    final goals = Provider.of<List<Goal>>(context) ?? [];
 
     return ListView.builder(
       itemCount: goals.length,

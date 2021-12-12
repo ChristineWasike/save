@@ -10,6 +10,8 @@ class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    // final goal = Provider.of<Goal>(context); 
+    // print(goal);
     void _showSettingsPanel() {
       showModalBottomSheet(
           context: context,

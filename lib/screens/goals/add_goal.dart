@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:save/models/goal.dart';
 import 'package:save/models/user.dart';
+import 'package:save/screens/goals/goal_view.dart';
 import 'package:save/screens/home/home.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';

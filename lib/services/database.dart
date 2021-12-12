@@ -30,15 +30,18 @@ class DatabaseService {
   // Creating a goal
   Future createGoal(String category, String title, int goal, String frequency,
       int amount, int currentBalance) async {
-    return await goalCollection.document().setData(<String, dynamic>{
+    DocumentReference docRef = goalCollection.document();
+
+    return await docRef.setData(<String, dynamic>{
       'user_id': uid, // User Id
       'category': category,
       'title': title,
       'goal': goal,
       'frequency': frequency, // weekly - $50
       'amount': amount,
-      'currentBalance':
-          currentBalance, // incremenent by amount deposited - $200, $20
+      'currentBalance': currentBalance,
+      'goal_id':
+          docRef.documentID, // incremenent by amount deposited - $200, $20
     });
   }
 
@@ -57,12 +60,19 @@ class DatabaseService {
           goal: doc.data['goal'] ?? 0,
           frequency: doc.data['frequency'] ?? '',
           amount: doc.data['amount'] ?? 0,
-          currentBalance: doc.data['currentBalance'] ?? 0);
+          currentBalance: doc.data['currentBalance'] ?? 0,
+          goalId: doc.data['goal_id']?? '',);
+          
     }).toList();
   }
 
   // Get Goals
   Stream<List<Goal>> get goals {
     return goalCollection.snapshots().map(_goalListFromSnapShot);
+  }
+
+  // Get goal doc stream
+  Stream<QuerySnapshot> get goalData {
+    return goalCollection.where('user_id', isEqualTo: uid).snapshots();
   }
 }
