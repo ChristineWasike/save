@@ -44,10 +44,12 @@ analysis_benchmark.json
 
 # packages file containing multi-root paths
 .packages.generated
-
+.packages
+    
 # Flutter/Dart/Pub related -- New addition of .packages and dart_tool
 **/doc/api/
 .dart_tool/
+/.dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 **/generated_plugin_registrant.dart
