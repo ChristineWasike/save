@@ -49,20 +49,20 @@ class _GoalViewState extends State<GoalView> {
             SizedBox(height: 40.0),
             // Rows with Page content
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Goal Category : ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 30.0),
                 Text(widget.goal.category,
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
             ),
             SizedBox(height: 40.0),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Saving Goal : ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 70.0),
                 Text((widget.goal.goal.toString() + ' Rwf'),
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
@@ -81,20 +81,20 @@ class _GoalViewState extends State<GoalView> {
             SizedBox(height: 30.0),
 
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Start Date: ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 90.0),
                 Text('Nov 11th 2021',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
             ),
             SizedBox(height: 40.0),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('End Date: ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 100.0),
                 Text('Nov 11th 2022',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],
@@ -111,10 +111,10 @@ class _GoalViewState extends State<GoalView> {
 
             SizedBox(height: 30.0),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Current Balance: ',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                SizedBox(width: 30.0),
                 Text(widget.goal.currentBalance.toString() + ' Rwf',
                     style: TextStyle(fontSize: 18.0, color: Colors.black)),
               ],

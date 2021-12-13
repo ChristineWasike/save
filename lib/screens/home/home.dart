@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:save/models/goal.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/components/goals.dart';
-import 'package:save/screens/home/home_body.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 
@@ -15,7 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // TODO: Create an array that calls the different screens
   final AuthService _auth = AuthService();
 
   @override
