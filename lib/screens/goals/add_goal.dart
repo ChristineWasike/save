@@ -15,13 +15,12 @@ class AddGoal extends StatefulWidget {
 
 class _AddGoalState extends State<AddGoal> {
   String _categoryValue;
-  String _frequencyValue;
+  // String _frequencyValue;
   List<String> categories = ['School', 'Tech Device', 'Car', 'Piggy Bank'];
   List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
 
   // Added the variables to collect the goal fields
-  // String category = '';
   String title = '';
   int goal = 0;
   String frequency = 'bi-weekly';

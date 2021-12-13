@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:save/models/goal.dart';
-// import 'package:save/screens/home/goal_list.dart';
 import 'package:provider/provider.dart';
+import 'package:save/models/user.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/components/goals.dart';
 import 'package:save/screens/home/profile.dart';
@@ -20,6 +20,12 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    // Getting the user Instance
+    final user = Provider.of<User>(context);
+    print(user.uid);
+
+    final users = Provider.of<List<UserData>>(context) ?? [];
+
     void _showSettingsPanel() {
       showModalBottomSheet(
           context: context,
@@ -62,8 +68,7 @@ class _HomeState extends State<Home> {
                   fontSize: 20,
                 ),
               ),
-              Text(
-                "Ehis",
+              Text("Ehis",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w100,

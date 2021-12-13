@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:save/screens/home/home.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -13,28 +14,20 @@ class _ProfileState extends State<Profile> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xffffc801),
+        appBar: AppBar(
+          backgroundColor: Color(0xffffc801),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Color(0xffececec),
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
+          ),
+        ),
         body: Stack(
           children: [
-// Back Icon
-            Positioned(
-              top: 50,
-              left: 20,
-              child: Icon(
-                Icons.arrow_back,
-                color: Color(0xffececec),
-                size: 30,
-              ),
-            ),
-// Edit Icon
-            Positioned(
-              top: 50,
-              right: 20,
-              child: Icon(
-                Icons.edit,
-                color: Color(0xffececec),
-                size: 30,
-              ),
-            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(

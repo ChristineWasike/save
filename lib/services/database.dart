@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:save/models/deposit.dart';
 import 'package:save/models/goal.dart';
+import 'package:save/models/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -79,9 +81,20 @@ class DatabaseService {
     }).toList();
   }
 
-  // Get Goals
-  Stream<List<Goal>> get goals {
-    return goalCollection.snapshots().map(_goalListFromSnapShot);
+
+
+  // Get User Data
+  List<UserData> _userListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return UserData(
+        firstName: doc.data['firstName'],
+        lastName: doc.data['lastName'],
+        email: doc.data['email'],
+        password: doc.data['password'],
+        accountBalance: doc.data['accountBalance'],
+        pin: doc.data['pin'],
+      );
+    }).toList();
   }
 
   // Get Deposits
@@ -89,8 +102,22 @@ class DatabaseService {
     return depositCollection.snapshots().map(_depositListFromSnapShot);
   }
 
+  // Get Goals
+  Stream<List<Goal>> get goals {
+    return goalCollection.snapshots().map(_goalListFromSnapShot);
+  }
+
   // Get goal doc stream
   Stream<QuerySnapshot> get goalData {
     return goalCollection.where('user_id', isEqualTo: uid).snapshots();
   }
+
+  Stream<List<UserData>> get users {
+    return userCollection.snapshots().map(_userListFromSnapshot);
+  }
+
+
+  // DocumentSnapshot get user{
+  //   return userCollection.document(uid);
+  // }
 }
