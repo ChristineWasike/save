@@ -179,10 +179,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.yellowAccent[700],
-        // gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
-      ),
+      decoration: BoxDecoration(color: Colors.white,
+          // TODO: Complete sis
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[300].withOpacity(0.8),
+              spreadRadius: 5,
+              blurRadius: 5,
+              offset: Offset(0, 7),
+            )
+          ]
+          // gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
+          ),
       child: BottomAppBar(
         elevation: 0,
         color: Colors.transparent,
@@ -264,7 +272,7 @@ class IconBottomBar extends StatelessWidget {
           icon: Icon(
             icon,
             size: 25,
-            color: selected ? Colors.white : Colors.grey,
+            color: selected ? Colors.yellowAccent[600] : Colors.grey,
           ),
         ),
         Text(
@@ -272,7 +280,7 @@ class IconBottomBar extends StatelessWidget {
           style: TextStyle(
             fontSize: 12,
             height: .1,
-            color: selected ? Colors.white : Colors.grey,
+            color: selected ? Colors.yellowAccent[600] : Colors.grey,
           ),
         )
       ],

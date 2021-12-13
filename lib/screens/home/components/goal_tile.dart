@@ -9,7 +9,7 @@ class GoalTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 6.0),
+      padding: EdgeInsets.only(top: 8.0),
       child: GestureDetector(
         onTap: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => GoalView(goal: goal))),
@@ -17,8 +17,10 @@ class GoalTile extends StatelessWidget {
           margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 6.0),
           child: ListTile(
             leading: CircleAvatar(
-              radius: 25.0,
-              backgroundColor: Colors.yellow[goal.goal],
+              radius: 20.0,
+              // backgroundColor: Colors.yellow[goal.goal],
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage('assets/dollar.png'),
             ),
             title: Text(goal.title),
             subtitle: Text(
