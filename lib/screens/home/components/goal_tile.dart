@@ -14,11 +14,13 @@ class GoalTile extends StatelessWidget {
         onTap: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => GoalView(goal: goal))),
         child: Card(
-          margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
+          margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 6.0),
           child: ListTile(
             leading: CircleAvatar(
-              radius: 25.0,
-              backgroundColor: Colors.yellow[goal.goal],
+              radius: 20.0,
+              // backgroundColor: Colors.amber[600][goal.goal],
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage('assets/dollar.png'),
             ),
             title: Text(goal.title),
             subtitle: Text(

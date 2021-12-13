@@ -133,7 +133,7 @@ class _RegisterState extends State<Register> {
                             height: 40,
                             child: RaisedButton(
                                 textColor: Colors.white,
-                                color: Colors.amber[700],
+                                color: Colors.amber[600],
                                 padding: const EdgeInsets.all(0.0),
                                 elevation: 5.0,
                                 shape: RoundedRectangleBorder(
@@ -167,7 +167,7 @@ class _RegisterState extends State<Register> {
                           Text(error,
                               style:
                                   TextStyle(color: Colors.red, fontSize: 14.0)),
-                          SizedBox(height: 20.0),
+                          SizedBox(height: 15.0),
                           TextButton.icon(
                             icon: Icon(
                               Icons.person,
@@ -175,7 +175,7 @@ class _RegisterState extends State<Register> {
                             ),
                             label: Text("Already have an account?",
                                 style: TextStyle(
-                                  fontSize: 15.0,
+                                  fontSize: 12.0,
                                   color: Colors.grey,
                                 )),
                             onPressed: () {

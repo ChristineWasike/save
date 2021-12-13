@@ -108,10 +108,10 @@ class TopCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.yellow,
+            color: Colors.amber[600],
             boxShadow: [
               BoxShadow(
-                  color: Colors.yellow,
+                  color: Colors.amber[600],
                   offset: Offset(4.0, 4.0),
                   blurRadius: 15.0,
                   spreadRadius: 1.0),

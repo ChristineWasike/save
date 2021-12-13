@@ -19,7 +19,7 @@ class MyTransaction extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: Container(
           padding: EdgeInsets.all(15),
-          color: Colors.yellow,
+          color: Colors.amber[600],
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

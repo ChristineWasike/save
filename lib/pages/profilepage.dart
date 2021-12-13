@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:save/screens/home/home.dart';
 import 'history.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -13,87 +14,77 @@ class _ProfilePageState extends State<ProfilePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.amber[600],
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
+          ),
+        ),
         body: Stack(
           children: [
-// Back Icon
-            Positioned(
-              top: 50,
-              left: 20,
-              child: Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-                size: 30,
-              ),
-            ),
-// Edit Icon
-            // Positioned(
-            //   top: 50,
-            //   right: 20,
-            //   child: Icon(
-            //     Icons.edit,
-            //     color: Colors.black,
-            //     size: 30,
-            //   ),
-            // ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 50, right: 50, bottom: 20, top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 70,
-                      backgroundImage: AssetImage('assets/profile7.jpg'),
-                    ),
-                    SizedBox(height: 20),
-                    Text('Ehis Pasiqu',
-                        style: GoogleFonts.lato(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 25)),
-                    SizedBox(height: 5),
-                    Text(
-                      'Kigali',
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 50, right: 50, bottom: 100, top: 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 70,
+                    backgroundImage: AssetImage('assets/profile7.jpg'),
+                  ),
+                  SizedBox(height: 20),
+                  Text('Ehis Pasiqu',
                       style: GoogleFonts.lato(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15,
-                        fontStyle: FontStyle.italic,
-                      ),
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 25)),
+                  SizedBox(height: 5),
+                  Text(
+                    'Kigali',
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
                     ),
-                    SizedBox(height: 20),
-                    ProfileMenuItem(
-                      text: 'History',
-                      icon: Icons.history,
-                      arrowShown: true,
-                      widget: HistoryPage(),
-                    ),
-                    SizedBox(height: 20),
-                    // ProfileMenuItem(
-                    //   text: 'Help & Support',
-                    //   icon: Icons.help,
-                    //   arrowShown: true,
-                    //   widget: HistoryPage(),
-                    // ),
-                    // SizedBox(height: 20),
-                    // ProfileMenuItem(
-                    //   text: 'Privacy Policy',
-                    //   icon: Icons.book,
-                    //   arrowShown: true,
-                    //   widget: HistoryPage(),
-                    // ),
-                    // SizedBox(height: 20),
-                    ProfileMenuItem(
-                      text: 'LogOut',
-                      icon: Icons.logout,
-                      arrowShown: false,
-                      widget: HistoryPage(),
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 20),
+                  ProfileMenuItem(
+                    text: 'History',
+                    icon: Icons.history,
+                    arrowShown: true,
+                    widget: HistoryPage(),
+                  ),
+                  SizedBox(height: 20),
+                  // ProfileMenuItem(
+                  //   text: 'Help & Support',
+                  //   icon: Icons.help,
+                  //   arrowShown: true,
+                  //   widget: HistoryPage(),
+                  // ),
+                  // SizedBox(height: 20),
+                  // ProfileMenuItem(
+                  //   text: 'Privacy Policy',
+                  //   icon: Icons.book,
+                  //   arrowShown: true,
+                  //   widget: HistoryPage(),
+                  // ),
+                  // SizedBox(height: 20),
+                  ProfileMenuItem(
+                    text: 'LogOut',
+                    icon: Icons.logout,
+                    arrowShown: false,
+                    widget: HistoryPage(),
+                  ),
+                ],
               ),
             ),
           ],

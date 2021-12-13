@@ -16,7 +16,7 @@ class AddGoal extends StatefulWidget {
 class _AddGoalState extends State<AddGoal> {
   String _categoryValue;
   // String _frequencyValue;
-  List<String> categories = ['School', 'Tech Device', 'Car', 'Piggy Bank'];
+  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank'];
   List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
 
@@ -228,7 +228,7 @@ class _AddGoalState extends State<AddGoal> {
                     height: 40,
                     child: RaisedButton(
                         textColor: Colors.white,
-                        color: Colors.amber[700],
+                        color: Colors.amber[600],
                         padding: const EdgeInsets.all(0.0),
                         elevation: 5.0,
                         shape: RoundedRectangleBorder(

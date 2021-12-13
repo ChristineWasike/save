@@ -20,7 +20,7 @@ const Color kBackgroundColor = Color(0xFFF9F8FD);
 const double kDefaultPadding = 20.0;
 
 Color brightYellow = Color(0xFFC801);
-Color yellowAmber = Colors.yellowAccent[700];
+Color yellowAmber = Colors.amber[600];
 Color greyBlue = Color(0x385A65);
 Color blueGrey = Colors.blue;
 Color darkBlue = Color(0x1B2E35);

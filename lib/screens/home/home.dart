@@ -16,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // TODO: Create an array that calls the different screens
   final AuthService _auth = AuthService();
 
   @override
@@ -33,7 +32,17 @@ class _HomeState extends State<Home> {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-              child: Text('BottomSheet'),
+              child: Column(
+                children: [
+                  Text('BottomSheet'),
+                  TextButton.icon(
+                      icon: Icon(Icons.person),
+                      label: Text("logout"),
+                      onPressed: () async {
+                        await _auth.signOut();
+                      }),
+                ],
+              ),
             );
           });
     }
@@ -42,38 +51,53 @@ class _HomeState extends State<Home> {
       value: DatabaseService().goals,
       child: Scaffold(
         backgroundColor: Colors.grey[50],
-        appBar: AppBar(
-          title: Text('Save'),
-          backgroundColor: Colors.amber[500],
-          actions: <Widget>[
-            TextButton.icon(
-                icon: Icon(Icons.person),
-                label: Text("logout"),
-                onPressed: () async {
-                  await _auth.signOut();
-                }),
-            TextButton.icon(
-                onPressed: () => _showSettingsPanel(),
-                icon: Icon(Icons.settings),
-                label: Text('settings'))
-          ],
-        ),
-        body: Center(
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 0.0,
+            top: 35.0,
+            right: 0.0,
+            bottom: 0.0,
+          ),
           child: ListView(
             shrinkWrap: true,
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.only(
+              left: 20.0,
+              top: 10.0,
+              right: 20.0,
+              bottom: 0.0,
+            ),
             children: <Widget>[
-              Text(
-                "Hello,",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        "Hello,",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        "Ehis",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w100,
+                        ),
+                      ),
+                    ],
+                  ),
+                  TextButton.icon(
+                      onPressed: () => _showSettingsPanel(),
+                      icon: Icon(Icons.person),
+                      label: Text('Account'))
+                ],
               ),
-              Text("Ehis",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w100,
-                ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                child: GoalButton(),
               ),
               SizedBox(
                 height: 30,
@@ -107,28 +131,27 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
-                height: 30,
-              ),
-              Container(
-                child: GoalButton(),
+                height: 50,
+                // child: DecoratedBox(decoration:),
               ),
               SizedBox(
                 height: 30,
               ),
               Row(
+                // Add Padding for row
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Goals",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w100,
                     ),
                   ),
                   Text(
                     "All",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ],
@@ -143,10 +166,7 @@ class _HomeState extends State<Home> {
                 endIndent: 20,
                 color: Colors.grey,
               ),
-              SizedBox(
-                height: 100,
-                child: GoalList(),
-              ),
+              SizedBox(height: 250, child: GoalList()),
             ],
           ),
         ),
@@ -167,10 +187,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.yellowAccent[700],
-        // gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
-      ),
+      decoration: BoxDecoration(color: Colors.white,
+          // TODO: Complete sis
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[300].withOpacity(0.8),
+              spreadRadius: 5,
+              blurRadius: 5,
+              offset: Offset(0, 7),
+            )
+          ]
+          // gradient: LinearGradient(colors: [Colors.orange, Colors.amber[600]]),
+          ),
       child: BottomAppBar(
         elevation: 0,
         color: Colors.transparent,
@@ -254,7 +282,7 @@ class IconBottomBar extends StatelessWidget {
           icon: Icon(
             icon,
             size: 25,
-            color: selected ? Colors.white : Colors.grey,
+            color: selected ? Colors.amber[600] : Colors.grey,
           ),
         ),
         Text(
@@ -262,7 +290,7 @@ class IconBottomBar extends StatelessWidget {
           style: TextStyle(
             fontSize: 12,
             height: .1,
-            color: selected ? Colors.white : Colors.grey,
+            color: selected ? Colors.amber[600] : Colors.grey,
           ),
         )
       ],
