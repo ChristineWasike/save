@@ -72,6 +72,12 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 30,
               ),
+              Container(
+                child: GoalButton(),
+              ),
+              SizedBox(
+                height: 30,
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -103,26 +109,21 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 30,
               ),
-              Container(
-                child: GoalButton(),
-              ),
-              SizedBox(
-                height: 30,
-              ),
               Row(
+                // Add Padding for row
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Goals",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w100,
                     ),
                   ),
                   Text(
                     "All",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ],
@@ -137,7 +138,7 @@ class _HomeState extends State<Home> {
                 endIndent: 20,
                 color: Colors.grey,
               ),
-              SizedBox(height: 100, child: GoalList()),
+              SizedBox(height: 200, child: GoalList()),
             ],
           ),
         ),
