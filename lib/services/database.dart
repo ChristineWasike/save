@@ -112,9 +112,9 @@ class DatabaseService {
     return goalCollection.where('user_id', isEqualTo: uid).snapshots();
   }
 
-  Stream<List<UserData>> get users {
-    return userCollection.snapshots().map(_userListFromSnapshot);
-  }
+  // Stream<List<UserData>> get users {
+  //   return userCollection.snapshots().map(_userListFromSnapshot);
+  // }
 
 
   // DocumentSnapshot get user{
