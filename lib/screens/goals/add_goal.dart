@@ -249,7 +249,7 @@ class _AddGoalState extends State<AddGoal> {
                         ),
                         onPressed: () async {
                           DatabaseService(uid: user.uid).createGoal(
-                              _currentCategory,
+                              _categoryValue,
                               title,
                               goal,
                               frequency,
