@@ -35,7 +35,6 @@ class _AddGoalState extends State<AddGoal> {
   int amount = 0;
   int currentBalance = 0;
 
-  String _currentCategory;
   var _currentSelectedValue;
 
   Widget build(BuildContext context) {
