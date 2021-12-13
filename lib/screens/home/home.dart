@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:save/models/goal.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/components/goals.dart';
+import 'package:save/screens/home/home_body.dart';
 import 'package:save/services/auth.dart';
+import 'package:save/services/database.dart';
+
+import 'components/goal_list.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,24 +20,129 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        title: Text('Save'),
-        backgroundColor: Colors.amber[600],
-        actions: <Widget>[
-          TextButton.icon(
-              icon: Icon(Icons.person),
-              label: Text("logout"),
-              onPressed: () async {
-                await _auth.signOut();
-              }),
-        ],
+    void _showSettingsPanel() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: Text('BottomSheet'),
+            );
+          });
+    }
+
+    return StreamProvider<List<Goal>>.value(
+      value: DatabaseService().goals,
+      child: Scaffold(
+        backgroundColor: Colors.grey[50],
+        appBar: AppBar(
+          title: Text('Save'),
+          backgroundColor: Colors.amber[500],
+          actions: <Widget>[
+            TextButton.icon(
+                icon: Icon(Icons.person),
+                label: Text("logout"),
+                onPressed: () async {
+                  await _auth.signOut();
+                }),
+            TextButton.icon(
+                onPressed: () => _showSettingsPanel(),
+                icon: Icon(Icons.settings),
+                label: Text('settings'))
+          ],
+        ),
+        body: Center(
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.all(25.0),
+            children: <Widget>[
+              Text(
+                "Hello,",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                "Ehis",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Total Savings',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Rwf ',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                child: GoalButton(),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Goals",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                  Text(
+                    "All",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Divider(
+                height: 10,
+                thickness: 1,
+                indent: 20,
+                endIndent: 20,
+                color: Colors.grey,
+              ),
+              SizedBox(height: 100, child: GoalList()),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavBar(),
       ),
-      body: Container(
-        child: GoalButton(),
-      ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
@@ -48,7 +159,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: Colors.yellowAccent[700],
         // gradient: LinearGradient(colors: [Colors.orange, Colors.yellow]),
       ),
       child: BottomAppBar(
@@ -69,7 +180,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   onPressed: () {
                     setState(() {
                       _selectedIndex = 0;
-                      Navigator.push(context,
+                      Navigator.pop(context,
                           MaterialPageRoute(builder: (context) => Home()));
                     });
                   },

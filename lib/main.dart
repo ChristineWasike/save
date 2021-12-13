@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:save/models/user.dart';
@@ -18,10 +16,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          // TODO: There is an error here figure it out and fix it
           // This is the theme of the application.
-          // scaffoldBackgroundColor: KBackgroundColor,
-          // primaryColor: KPrimaryColor,
+          // scaffoldBackgroundColor: kBackgroundColor,
+          // primaryColor: kPrimaryColor,
           textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,
           ),
