@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:save/models/goal.dart';
-import 'package:save/screens/home/goal_list.dart';
+// import 'package:save/screens/home/goal_list.dart';
 import 'package:provider/provider.dart';
 import 'package:save/screens/goals/add_goal.dart';
-// import 'package:save/screens/home/components/goals.dart';
-// import 'package:save/screens/home/home_body.dart';
+import 'package:save/screens/home/components/goals.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'components/goal_list.dart';
@@ -138,7 +137,7 @@ class _HomeState extends State<Home> {
                 endIndent: 20,
                 color: Colors.grey,
               ),
-              SizedBox(height: 100, child: GoalList()),
+              SizedBox(height: 100, child: GoalList(),),
             ],
           ),
         ),
