@@ -7,8 +7,6 @@ import 'package:save/screens/goals/goal_view.dart';
 import 'package:save/screens/home/home.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:save/screens/goals/goal_view.dart';
-import 'package:save/screens/home/home.dart';
 
 class AddGoal extends StatefulWidget {
   @override
@@ -18,12 +16,7 @@ class AddGoal extends StatefulWidget {
 class _AddGoalState extends State<AddGoal> {
   String _categoryValue;
   String _frequencyValue;
-  final List<String> categories = [
-    'School',
-    'Technology Device',
-    'Car',
-    'Piggy Bank'
-  ];
+  List<String> categories = ['School', 'Tech Device', 'Car', 'Piggy Bank'];
   List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
 
