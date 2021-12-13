@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:save/models/deposit.dart';
 import 'package:save/models/goal.dart';
 
 class DatabaseService {
@@ -46,29 +47,46 @@ class DatabaseService {
   }
 
   // Collection Desposits - Date, Amount, Goal_id
-  Future createDeposit(DateTime date, int amount, String goalId) async {
+  Future createDeposit(String date, int amount, String goalId) async {
     return await depositCollection.document().setData(
         <String, dynamic>{'date': date, 'amount': amount, 'goalId': goalId});
   }
 
+  // Snapshot of goals
   List<Goal> _goalListFromSnapShot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Goal(
-          userId: doc.data['user_id'] ?? '',
-          category: doc.data['category'] ?? '',
-          title: doc.data['title'] ?? '',
-          goal: doc.data['goal'] ?? 0,
-          frequency: doc.data['frequency'] ?? '',
-          amount: doc.data['amount'] ?? 0,
-          currentBalance: doc.data['currentBalance'] ?? 0,
-          goalId: doc.data['goal_id']?? '',);
-          
+        userId: doc.data['user_id'] ?? '',
+        category: doc.data['category'] ?? '',
+        title: doc.data['title'] ?? '',
+        goal: doc.data['goal'] ?? 0,
+        frequency: doc.data['frequency'] ?? '',
+        amount: doc.data['amount'] ?? 0,
+        currentBalance: doc.data['currentBalance'] ?? 0,
+        goalId: doc.data['goal_id'] ?? '',
+      );
+    }).toList();
+  }
+
+// Snapshot of deposits
+  List<Deposit> _depositListFromSnapShot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Deposit(
+        amount: doc.data['amount'] ?? 0,
+        timestamp: doc.data['timestamp'] ?? '',
+        goalId: doc.data['goalId'] ?? '',
+      );
     }).toList();
   }
 
   // Get Goals
   Stream<List<Goal>> get goals {
     return goalCollection.snapshots().map(_goalListFromSnapShot);
+  }
+
+  // Get Deposits
+  Stream<List<Deposit>> get deposits {
+    return depositCollection.snapshots().map(_depositListFromSnapShot);
   }
 
   // Get goal doc stream
