@@ -50,7 +50,10 @@ class _AddGoalState extends State<AddGoal> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
           ),
         ),
         body: Container(
