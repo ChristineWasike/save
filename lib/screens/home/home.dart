@@ -26,7 +26,17 @@ class _HomeState extends State<Home> {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-              child: Text('BottomSheet'),
+              child: Column(
+                children: [
+                  Text('BottomSheet'),
+                  TextButton.icon(
+                      icon: Icon(Icons.person),
+                      label: Text("logout"),
+                      onPressed: () async {
+                        await _auth.signOut();
+                      }),
+                ],
+              ),
             );
           });
     }
@@ -35,39 +45,47 @@ class _HomeState extends State<Home> {
       value: DatabaseService().goals,
       child: Scaffold(
         backgroundColor: Colors.grey[50],
-        appBar: AppBar(
-          title: Text('Save'),
-          backgroundColor: Colors.amber[500],
-          actions: <Widget>[
-            TextButton.icon(
-                icon: Icon(Icons.person),
-                label: Text("logout"),
-                onPressed: () async {
-                  await _auth.signOut();
-                }),
-            TextButton.icon(
-                onPressed: () => _showSettingsPanel(),
-                icon: Icon(Icons.settings),
-                label: Text('settings'))
-          ],
-        ),
-        body: Center(
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 0.0,
+            top: 35.0,
+            right: 0.0,
+            bottom: 0.0,
+          ),
           child: ListView(
             shrinkWrap: true,
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.only(
+              left: 20.0,
+              top: 10.0,
+              right: 20.0,
+              bottom: 0.0,
+            ),
             children: <Widget>[
-              Text(
-                "Hello,",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              Text(
-                "Ehis",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w100,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        "Hello,",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        "Ehis",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w100,
+                        ),
+                      ),
+                    ],
+                  ),
+                  TextButton.icon(
+                      onPressed: () => _showSettingsPanel(),
+                      icon: Icon(Icons.person),
+                      label: Text('Account'))
+                ],
               ),
               SizedBox(
                 height: 30,
@@ -107,6 +125,10 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
+                height: 100,
+                // child: DecoratedBox(decoration:),
+              ),
+              SizedBox(
                 height: 30,
               ),
               Row(
@@ -138,7 +160,7 @@ class _HomeState extends State<Home> {
                 endIndent: 20,
                 color: Colors.grey,
               ),
-              SizedBox(height: 200, child: GoalList()),
+              SizedBox(height: 250, child: GoalList()),
             ],
           ),
         ),
