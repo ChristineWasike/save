@@ -4,10 +4,10 @@ import 'package:save/models/goal.dart';
 import 'package:provider/provider.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/components/goals.dart';
+import 'package:save/screens/home/profile.dart';
 import 'package:save/services/auth.dart';
 import 'package:save/services/database.dart';
 import 'components/goal_list.dart';
-
 
 class Home extends StatefulWidget {
   @override
@@ -137,7 +137,10 @@ class _HomeState extends State<Home> {
                 endIndent: 20,
                 color: Colors.grey,
               ),
-              SizedBox(height: 100, child: GoalList(),),
+              SizedBox(
+                height: 100,
+                child: GoalList(),
+              ),
             ],
           ),
         ),
@@ -212,6 +215,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   icon: Icons.settings,
                   selected: _selectedIndex == 3,
                   onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Profile()));
                     setState(() {
                       _selectedIndex = 3;
                     });
