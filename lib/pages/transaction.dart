@@ -55,15 +55,15 @@ class MyTransaction extends StatelessWidget {
                 ],
               ),
               Text(
-                (DepositOrWithdrawal == 'withdraw' ? '-' : '+') +
+                (DepositOrWithdrawal == 'withdraw' ? '+' : '-') +
                     'RWF ' +
                     money,
                 style: TextStyle(
                   //fontWeight: FontWeight.bold,
                   fontSize: 16,
                   color: DepositOrWithdrawal == 'withdraw'
-                      ? Colors.red
-                      : Colors.green,
+                      ? Colors.green
+                      : Colors.red,
                 ),
               ),
             ],

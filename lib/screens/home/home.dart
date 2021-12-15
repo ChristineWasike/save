@@ -217,7 +217,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   onPressed: () {
                     setState(() {
                       _selectedIndex = 0;
-                      Navigator.pop(context,
+                      Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Home()));
                     });
                   },

@@ -156,11 +156,11 @@ class _GoalViewState extends State<GoalView> {
           title: Text(
             'Enter amount you want to save',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 16,
             ),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           content: TextField(
             autofocus: true,
             decoration: InputDecoration(
