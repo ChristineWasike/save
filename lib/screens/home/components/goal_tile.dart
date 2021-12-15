@@ -21,7 +21,7 @@ class _GoalTileState extends State<GoalTile> {
     final user = Provider.of<User>(context);
     print(user);
     return Padding(
-      padding: EdgeInsets.only(top: 8.0),
+      padding: EdgeInsets.only(top: 0.0),
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
