@@ -14,6 +14,7 @@ class _GoalListState extends State<GoalList> {
     final goals = Provider.of<List<Goal>>(context) ?? [];
 
     return ListView.builder(
+      padding: EdgeInsets.zero,
       itemCount: goals.length,
       itemBuilder: (context, index) {
         return GoalTile(goal: goals[index]);

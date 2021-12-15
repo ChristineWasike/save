@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:save/models/deposit.dart';
 import 'package:save/models/goal.dart';
+import 'package:save/models/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -46,11 +49,12 @@ class DatabaseService {
   }
 
   // Collection Desposits - Date, Amount, Goal_id
-  Future createDeposit(DateTime date, int amount, String goalId) async {
+  Future createDeposit(String date, int amount, String goalId) async {
     return await depositCollection.document().setData(
         <String, dynamic>{'date': date, 'amount': amount, 'goalId': goalId});
   }
 
+  // Snapshot of goals
   List<Goal> _goalListFromSnapShot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Goal(
@@ -64,6 +68,36 @@ class DatabaseService {
         goalId: doc.data['goal_id'] ?? '',
       );
     }).toList();
+  }
+
+// Snapshot of deposits
+  List<Deposit> _depositListFromSnapShot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Deposit(
+        amount: doc.data['amount'] ?? 0,
+        timestamp: doc.data['timestamp'] ?? '',
+        goalId: doc.data['goalId'] ?? '',
+      );
+    }).toList();
+  }
+
+  // Get User Data
+  List<UserData> _userListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return UserData(
+        firstName: doc.data['firstName'],
+        lastName: doc.data['lastName'],
+        email: doc.data['email'],
+        password: doc.data['password'],
+        accountBalance: doc.data['accountBalance'],
+        pin: doc.data['pin'],
+      );
+    }).toList();
+  }
+
+  // Get Deposits
+  Stream<List<Deposit>> get deposits {
+    return depositCollection.snapshots().map(_depositListFromSnapShot);
   }
 
   Future deleteGoal(String id) async {
@@ -83,3 +117,11 @@ class DatabaseService {
     return goalCollection.where('user_id', isEqualTo: uid).snapshots();
   }
 }
+
+// Stream<List<UserData>> get users {
+//   return userCollection.snapshots().map(_userListFromSnapshot);
+// }
+
+// DocumentSnapshot get user{
+//   return userCollection.document(uid);
+// }

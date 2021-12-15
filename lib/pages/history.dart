@@ -43,7 +43,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text('Withdrawal'),
+                          Text('Deposit'),
                           Switch(
                             value: _isIncome,
                             onChanged: (newValue) {
@@ -52,7 +52,7 @@ class _HistoryPageState extends State<HistoryPage> {
                               });
                             },
                           ),
-                          Text('Deposit'),
+                          Text('Withdrawal'),
                         ],
                       ),
                       SizedBox(

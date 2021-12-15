@@ -86,7 +86,7 @@ class _SignInState extends State<SignIn> {
                           height: 40,
                           child: RaisedButton(
                               textColor: Colors.white,
-                              color: Colors.amber[700],
+                              color: Colors.amber[600],
                               padding: const EdgeInsets.all(0.0),
                               elevation: 5.0,
                               shape: RoundedRectangleBorder(
@@ -130,7 +130,7 @@ class _SignInState extends State<SignIn> {
                           label: Text(
                             "Create an account",
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 12.0,
                               color: Colors.grey,
                             ),
                           ),
