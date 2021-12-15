@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:save/models/goal.dart';
 import 'package:provider/provider.dart';
 import 'package:save/models/user.dart';
@@ -93,7 +94,7 @@ class _HomeState extends State<Home> {
                       onPressed: () => _showSettingsPanel(),
                       icon: Icon(
                         Icons.person,
-                        color: Colors.amber[600],
+                        color: Colors.green[600],
                       ),
                       label: Text(''))
                 ],
@@ -136,9 +137,36 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
-                height: 50,
-                // child: DecoratedBox(decoration:),
+                height: 20,
               ),
+              Stack(
+                alignment: AlignmentDirectional.center,
+                children: <Widget>[
+                Container(
+                  child: CircularPercentIndicator(
+                    radius: 150,
+                    lineWidth: 10,
+                    percent: 0.7,
+                    backgroundColor: Colors.grey[50],
+                    progressColor: Colors.amber[700],
+                    circularStrokeCap: CircularStrokeCap.round,
+                    center: Text(
+                      'Progress',
+                      style: TextStyle(color: Colors.black54, fontSize: 20.0),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: CircularPercentIndicator(
+                    radius: 130,
+                    lineWidth: 10,
+                    percent: 0.55,
+                    backgroundColor: Colors.grey[50],
+                    progressColor: Colors.amber[600],
+                    circularStrokeCap: CircularStrokeCap.round,
+                  ),
+                ),
+              ]),
               Row(
                 // Add Padding for row
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,8 +269,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   icon: Icons.history,
                   selected: _selectedIndex == 2,
                   onPressed: () {
-                     Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HistoryPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HistoryPage()));
                     setState(() {
                       _selectedIndex = 2;
                     });
