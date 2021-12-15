@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:save/models/goal.dart';
+import 'package:save/pages/history.dart';
 import 'package:save/pages/profilepage.dart';
 import 'package:save/screens/goals/add_goal.dart';
 import 'package:save/screens/home/components/goals.dart';
@@ -233,6 +236,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   icon: Icons.history,
                   selected: _selectedIndex == 2,
                   onPressed: () {
+                     Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HistoryPage()));
                     setState(() {
                       _selectedIndex = 2;
                     });
