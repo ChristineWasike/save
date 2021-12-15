@@ -136,7 +136,7 @@ class _AddGoalState extends State<AddGoal> {
                         color: Colors.redAccent,
                         fontSize: 16.0,
                       ),
-                      hintText: 'Please enter a saving goal',
+                      hintText: 'Please enter a long-term goal',
                       // border: OutlineInputBorder(
                       //   borderRadius: BorderRadius.circular(5.0),
                       // ),
@@ -205,11 +205,12 @@ class _AddGoalState extends State<AddGoal> {
 
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'How much will you save (Rwf)',
+                      labelText: 'How much will you save (bi-weekly/monthly)',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.grey,
                       ),
+                      hintText: 'Enter amount in rwf',
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.amber[700]),
                       ),

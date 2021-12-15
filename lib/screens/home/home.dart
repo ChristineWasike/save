@@ -23,10 +23,11 @@ class _HomeState extends State<Home> {
           context: context,
           builder: (context) {
             return Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              height: 100,
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
               child: Column(
                 children: [
-                  Text('BottomSheet'),
+                  // Text('BottomSheet'),
                   TextButton.icon(
                       icon: Icon(Icons.person),
                       label: Text("logout"),
@@ -81,8 +82,11 @@ class _HomeState extends State<Home> {
                   ),
                   TextButton.icon(
                       onPressed: () => _showSettingsPanel(),
-                      icon: Icon(Icons.person),
-                      label: Text('Account'))
+                      icon: Icon(
+                        Icons.person,
+                        color: Colors.amber[600],
+                      ),
+                      label: Text(''))
                 ],
               ),
               SizedBox(
@@ -125,9 +129,6 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 100,
                 // child: DecoratedBox(decoration:),
-              ),
-              SizedBox(
-                height: 30,
               ),
               Row(
                 // Add Padding for row
