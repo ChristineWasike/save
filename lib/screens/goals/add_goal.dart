@@ -8,6 +8,8 @@ import 'package:save/screens/home/home.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
 
+// MAKE KEYBOARD PUSH FORM UP AND MAKE SCROLLABLE
+
 class AddGoal extends StatefulWidget {
   @override
   State<AddGoal> createState() => _AddGoalState();
@@ -16,7 +18,7 @@ class AddGoal extends StatefulWidget {
 class _AddGoalState extends State<AddGoal> {
   String _categoryValue;
   // String _frequencyValue;
-  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank'];
+  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank', 'Other'];
   List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
 
