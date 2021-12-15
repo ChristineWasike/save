@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:save/models/user.dart';
+import 'package:save/pages/google_sheets_api.dart';
 import 'package:save/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:save/services/auth.dart';
 
-
-void main() => runApp(MyApp());
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  GoogleSheetsApi().init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // This is the theme of the application.
-          // scaffoldBackgroundColor: kBackgroundColor,
+          // scaffoldBackgroundColor: kBackgroundColor,`
           // primaryColor: kPrimaryColor,
           textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,

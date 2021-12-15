@@ -81,8 +81,6 @@ class DatabaseService {
     }).toList();
   }
 
-
-
   // Get User Data
   List<UserData> _userListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
@@ -102,6 +100,13 @@ class DatabaseService {
     return depositCollection.snapshots().map(_depositListFromSnapShot);
   }
 
+  Future deleteGoal(String id) async {
+    DocumentSnapshot snapshot = await goalCollection.document(id).get();
+    await Firestore.instance.runTransaction((Transaction myTransaction) async {
+      await myTransaction.delete(snapshot.reference);
+    });
+  }
+
   // Get Goals
   Stream<List<Goal>> get goals {
     return goalCollection.snapshots().map(_goalListFromSnapShot);
@@ -111,13 +116,12 @@ class DatabaseService {
   Stream<QuerySnapshot> get goalData {
     return goalCollection.where('user_id', isEqualTo: uid).snapshots();
   }
-
-  // Stream<List<UserData>> get users {
-  //   return userCollection.snapshots().map(_userListFromSnapshot);
-  // }
-
-
-  // DocumentSnapshot get user{
-  //   return userCollection.document(uid);
-  // }
 }
+
+// Stream<List<UserData>> get users {
+//   return userCollection.snapshots().map(_userListFromSnapshot);
+// }
+
+// DocumentSnapshot get user{
+//   return userCollection.document(uid);
+// }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:save/screens/home/home.dart';
 import 'history.dart';
+import 'package:save/pages/history.dart';
+import 'package:save/screens/authenticate/signin.dart';
+import 'package:save/services/auth.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -9,6 +12,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -104,7 +108,7 @@ class ProfileMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => widget));
       },
