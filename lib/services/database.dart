@@ -66,6 +66,13 @@ class DatabaseService {
     }).toList();
   }
 
+  Future deleteGoal(String id) async {
+    DocumentSnapshot snapshot = await goalCollection.document(id).get();
+    await Firestore.instance.runTransaction((Transaction myTransaction) async {
+      await myTransaction.delete(snapshot.reference);
+    });
+  }
+
   // Get Goals
   Stream<List<Goal>> get goals {
     return goalCollection.snapshots().map(_goalListFromSnapShot);

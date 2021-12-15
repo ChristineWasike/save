@@ -1,188 +1,296 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:save/models/goal.dart';
+import 'package:save/models/user.dart';
+import 'package:save/screens/goals/goal_view.dart';
 import 'package:save/screens/home/home.dart';
+import 'package:save/services/database.dart';
+import 'package:provider/provider.dart';
 
-class GoalView extends StatefulWidget {
-  final Goal goal;
-  GoalView({this.goal});
+class UpdateGoal extends StatefulWidget {
+final Goal goal;
+  UpdateGoal({this.goal});
+
   @override
-  State<GoalView> createState() => _GoalViewState();
+  State<UpdateGoal> createState() => _UpdateGoalState();
 }
 
-class _GoalViewState extends State<GoalView> {
-  @override
+class _UpdateGoalState extends State<UpdateGoal> {
+  
+  String _categoryValue;
+  // String _frequencyValue;
+  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank'];
+  List<String> frequencies = ['Bi-weekly', 'Monthly'];
+  final _formKey = GlobalKey<FormState>();
+
+  // Added the variables to collect the goal fields
+  String title = UpdateGoal().goal.title;
+  int goal = UpdateGoal().goal.goal;
+  String frequency = UpdateGoal().goal.frequency;
+  int amount = UpdateGoal().goal.amount;
+  int currentBalance = UpdateGoal().goal.currentBalance;
+
+  var _currentSelectedValue;
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
+    final user = Provider.of<User>(context);
+    print(user);
+    return StreamProvider<List<Goal>>.value(
+      value: DatabaseService().goals,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            size: 25,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Center(
+            child: Text(
+              "Add a new Goal",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
-          color: Colors.black,
-          onPressed: () {
-            Navigator.pop(
-                context, MaterialPageRoute(builder: (context) => Home()));
-          },
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
+          ),
         ),
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
-        child: Column(
-          children: [
-            SizedBox(height: 40.0),
-            // Row with Page title
-            Row(
-              children: <Widget>[
-                Text('Goal Progress: ',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.black)),
-                Text(widget.goal.title,
-                    style: TextStyle(fontSize: 20.0, color: Colors.black)),
-              ],
-            ),
-            SizedBox(height: 40.0),
-            // Rows with Page content
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Goal Category : ',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                Text(widget.goal.category,
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-              ],
-            ),
-            SizedBox(height: 40.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Saving Goal : ',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                Text((widget.goal.goal.toString() + ' Rwf'),
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-              ],
-            ),
-
-            SizedBox(height: 30.0),
-
-            Divider(
-              height: 10,
-              thickness: 1,
-              indent: 55,
-              endIndent: 55,
-              color: Colors.grey,
-            ),
-
-            SizedBox(height: 30.0),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Start Date: ',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                Text('Nov 11th 2021',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-              ],
-            ),
-            SizedBox(height: 40.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('End Date: ',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                Text('Nov 11th 2022',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-              ],
-            ),
-            SizedBox(height: 30.0),
-
-            Divider(
-              height: 10,
-              thickness: 1,
-              indent: 55,
-              endIndent: 55,
-              color: Colors.grey,
-            ),
-
-            SizedBox(height: 30.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Current Balance: ',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-                Text(widget.goal.currentBalance.toString() + ' Rwf',
-                    style: TextStyle(fontSize: 18.0, color: Colors.black)),
-              ],
-            ),
-
-            SizedBox(height: 30.0),
-            Container(
-              width: 250,
-              height: 40,
-              child: RaisedButton(
-                  textColor: Colors.white,
-                  color: Colors.amber[700],
-                  padding: const EdgeInsets.all(0.0),
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
+        body: Container(
+          padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
+          child: Center(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10.0,
                   ),
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Text(
-                      'Deposit',
-                      style: TextStyle(fontSize: 16),
+
+                  // Category Input Field
+
+                  InputDecorator(
+                    decoration: InputDecoration(
+                      labelText: 'Goal Category',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
+                      errorStyle: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 16.0,
+                      ),
+                      hintText: 'Please select a category',
+                      // border: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(5.0),
+                      // ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.amber[700]),
+                      ),
+                    ),
+                    isEmpty: _categoryValue == '',
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _categoryValue,
+                        isDense: true,
+                        onChanged: (val) =>
+                            setState(() => _categoryValue = val),
+                        items: categories.map((category) {
+                          return DropdownMenuItem(
+                            value: category,
+                            child: Text(category),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    depositDialog();
-                  }),
+                  // buildDropDown(categories, _categoryValue),
+                  SizedBox(height: 20.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Goal Title',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.amber[700]),
+                      ),
+                    ),
+                    onChanged: (val) {
+                      setState(() => title = val);
+                    },
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  // Goal
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Saving Goal (Rwf)',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
+                      errorStyle: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 16.0,
+                      ),
+                      hintText: 'Please enter a saving goal',
+                      // border: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(5.0),
+                      // ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.amber[700]),
+                      ),
+                    ),
+                    onChanged: (val) {
+                      setState(() => goal = int.parse(val));
+                    },
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  // Frequency
+                  InputDecorator(
+                    decoration: InputDecoration(
+                      labelText: 'How often will you save',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
+                      errorStyle: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 16.0,
+                      ),
+                      hintText: 'Please select how often will you save',
+                      // border: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(5.0),
+                      // ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.amber[700]),
+                      ),
+                    ),
+                    isEmpty: _currentSelectedValue == '',
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _currentSelectedValue,
+                        isDense: true,
+                        onChanged: (String newValue) {
+                          setState(() {
+                            _currentSelectedValue = newValue;
+                            frequency = newValue;
+                          });
+                        },
+                        items: <String>["Bi-weekly", "Monthly"]
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  // Amount per frequency
+
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'How much will you save (Rwf)',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.amber[700]),
+                      ),
+                    ),
+                    onChanged: (val) {
+                      setState(() => amount = int.parse(val));
+                    },
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                  ),
+                  SizedBox(height: 30.0),
+                  Container(
+                    width: 250,
+                    height: 40,
+                    child: RaisedButton(
+                        textColor: Colors.white,
+                        color: Colors.amber[700],
+                        padding: const EdgeInsets.all(0.0),
+                        elevation: 5.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Add Goal',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        onPressed: () async {
+                          DatabaseService(uid: user.uid).createGoal(
+                              _categoryValue,
+                              title,
+                              goal,
+                              frequency,
+                              amount,
+                              currentBalance);
+                          Navigator.pop(context,
+                              MaterialPageRoute(builder: (context) => Home()));
+                        }),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Future depositDialog() => showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(
-            'Enter amount you want to save',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
+  Padding buildDropDown(List listItem, String dropDownValue) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        child: DropdownButton(
+          hint: Text("Select: "),
+          dropdownColor: Colors.grey[100],
+          icon: Icon(Icons.arrow_drop_down),
+          iconSize: 36,
+          isExpanded: true,
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 18,
           ),
-          backgroundColor: Colors.black,
-          content: TextField(
-            autofocus: true,
-            decoration: InputDecoration(
-              hintText: 'Enter amount you want to save: ',
-              focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber[700])),
-            ),
-
-            // TODO: This is what you use to collect the data https://www.youtube.com/watch?v=D6icsXS8NeA
-            // controller: ,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-              },
-              child: Text(
-                'Submit',
-                style: TextStyle(color: Colors.amber[700]),
-              ),
-            )
-          ],
+          value: dropDownValue,
+          onChanged: (newValue) {
+            setState(() {
+              dropDownValue = newValue;
+            });
+          },
+          items: listItem.map((valueItem) {
+            return DropdownMenuItem(value: valueItem, child: Text(valueItem));
+          }).toList(),
         ),
-      );
+      ),
+    );
+  }
 }

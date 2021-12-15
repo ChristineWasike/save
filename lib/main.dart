@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // This is the theme of the application.
-          // scaffoldBackgroundColor: kBackgroundColor,
+          // scaffoldBackgroundColor: kBackgroundColor,`
           // primaryColor: kPrimaryColor,
           textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,
