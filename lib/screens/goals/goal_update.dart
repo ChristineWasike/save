@@ -8,12 +8,16 @@ import 'package:save/screens/home/home.dart';
 import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
 
-class AddGoal extends StatefulWidget {
+class UpdateGoal extends StatefulWidget {
+final Goal goal;
+  UpdateGoal({this.goal});
+
   @override
-  State<AddGoal> createState() => _AddGoalState();
+  State<UpdateGoal> createState() => _UpdateGoalState();
 }
 
-class _AddGoalState extends State<AddGoal> {
+class _UpdateGoalState extends State<UpdateGoal> {
+  
   String _categoryValue;
   // String _frequencyValue;
   List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank'];
@@ -21,11 +25,11 @@ class _AddGoalState extends State<AddGoal> {
   final _formKey = GlobalKey<FormState>();
 
   // Added the variables to collect the goal fields
-  String title = '';
-  int goal = 0;
-  String frequency = 'bi-weekly';
-  int amount = 0;
-  int currentBalance = 0;
+  String title = UpdateGoal().goal.title;
+  int goal = UpdateGoal().goal.goal;
+  String frequency = UpdateGoal().goal.frequency;
+  int amount = UpdateGoal().goal.amount;
+  int currentBalance = UpdateGoal().goal.currentBalance;
 
   var _currentSelectedValue;
 
