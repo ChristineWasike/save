@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +11,7 @@ import 'package:save/services/database.dart';
 import 'package:provider/provider.dart';
 
 class UpdateGoal extends StatefulWidget {
-final Goal goal;
+  final Goal goal;
   UpdateGoal({this.goal});
 
   @override
@@ -17,21 +19,30 @@ final Goal goal;
 }
 
 class _UpdateGoalState extends State<UpdateGoal> {
-  
   String _categoryValue;
   // String _frequencyValue;
-  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank'];
+  List<String> categories = ['School', 'Tech', 'Car', 'Piggy Bank', 'Other'];
   List<String> frequencies = ['Bi-weekly', 'Monthly'];
   final _formKey = GlobalKey<FormState>();
-
-  // Added the variables to collect the goal fields
-  String title = UpdateGoal().goal.title;
-  int goal = UpdateGoal().goal.goal;
-  String frequency = UpdateGoal().goal.frequency;
-  int amount = UpdateGoal().goal.amount;
-  int currentBalance = UpdateGoal().goal.currentBalance;
-
+  final TextEditingController _titleController = new TextEditingController();
+  final TextEditingController _goalController = new TextEditingController();
+  final TextEditingController _amountController = new TextEditingController();
+  final TextEditingController _frequencyController =
+      new TextEditingController();
+  final TextEditingController _currentBalanceController =
+      new TextEditingController();
   var _currentSelectedValue;
+
+  @override
+  void initState() {
+    _categoryValue = widget.goal.category;
+    _titleController.text = widget.goal.title;
+    _goalController.text = widget.goal.goal.toString();
+    _frequencyController.text = widget.goal.frequency;
+    _amountController.text = widget.goal.amount.toString();
+    _currentBalanceController.text = widget.goal.currentBalance.toString();
+    return super.initState();
+  }
 
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -71,7 +82,6 @@ class _UpdateGoalState extends State<UpdateGoal> {
                   ),
 
                   // Category Input Field
-
                   InputDecorator(
                     decoration: InputDecoration(
                       labelText: 'Goal Category',
@@ -91,7 +101,6 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         borderSide: BorderSide(color: Colors.amber[700]),
                       ),
                     ),
-                    isEmpty: _categoryValue == '',
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: _categoryValue,
@@ -107,9 +116,11 @@ class _UpdateGoalState extends State<UpdateGoal> {
                       ),
                     ),
                   ),
-                  // buildDropDown(categories, _categoryValue),
+
                   SizedBox(height: 20.0),
-                  TextFormField(
+
+                  // Title
+                  TextField(
                     decoration: InputDecoration(
                       labelText: 'Goal Title',
                       labelStyle: TextStyle(
@@ -120,16 +131,19 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         borderSide: BorderSide(color: Colors.amber[700]),
                       ),
                     ),
-                    onChanged: (val) {
-                      setState(() => title = val);
-                    },
+                    controller: _titleController,
+                    // onChanged: (val) {
+                    //   setState(() => title = val);
+                    // },
                   ),
+
                   SizedBox(
                     height: 20.0,
                   ),
 
                   // Goal
-                  TextFormField(
+                  TextField(
+                    controller: _goalController,
                     decoration: InputDecoration(
                       labelText: 'Saving Goal (Rwf)',
                       labelStyle: TextStyle(
@@ -148,14 +162,15 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         borderSide: BorderSide(color: Colors.amber[700]),
                       ),
                     ),
-                    onChanged: (val) {
-                      setState(() => goal = int.parse(val));
-                    },
+                    // onChanged: (val) {
+                    //   setState(() => goal = int.parse(val));
+                    // },
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                   ),
+
                   SizedBox(
                     height: 20.0,
                   ),
@@ -188,7 +203,7 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         onChanged: (String newValue) {
                           setState(() {
                             _currentSelectedValue = newValue;
-                            frequency = newValue;
+                            // frequency = newValue;
                           });
                         },
                         items: <String>["Bi-weekly", "Monthly"]
@@ -201,13 +216,15 @@ class _UpdateGoalState extends State<UpdateGoal> {
                       ),
                     ),
                   ),
+
                   SizedBox(
                     height: 20.0,
                   ),
 
                   // Amount per frequency
 
-                  TextFormField(
+                  TextField(
+                    controller: _amountController,
                     decoration: InputDecoration(
                       labelText: 'How much will you save (Rwf)',
                       labelStyle: TextStyle(
@@ -218,15 +235,17 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         borderSide: BorderSide(color: Colors.amber[700]),
                       ),
                     ),
-                    onChanged: (val) {
-                      setState(() => amount = int.parse(val));
-                    },
+                    // onChanged: (val) {
+                    //   setState(() => amount = int.parse(val));
+                    // },
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                   ),
+
                   SizedBox(height: 30.0),
+
                   Container(
                     width: 250,
                     height: 40,
@@ -246,15 +265,15 @@ class _UpdateGoalState extends State<UpdateGoal> {
                           ),
                         ),
                         onPressed: () async {
-                          DatabaseService(uid: user.uid).createGoal(
-                              _categoryValue,
-                              title,
-                              goal,
-                              frequency,
-                              amount,
-                              currentBalance);
-                          Navigator.pop(context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                          // DatabaseService(uid: user.uid).createGoal(
+                          //     _categoryValue,
+                          //     title,
+                          //     goal,
+                          //     frequency,
+                          //     amount,
+                          //     currentBalance);
+                          // Navigator.pop(context,
+                          //     MaterialPageRoute(builder: (context) => Home()));
                         }),
                   ),
                 ],
