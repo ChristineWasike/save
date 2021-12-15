@@ -33,6 +33,7 @@ dependencies:
   provider: ^4.0.0
   google_fonts: ^1.1.1
   flutter_spinkit: ^4.0.0
+  gsheets:
 
 dev_dependencies:
   flutter_test:
