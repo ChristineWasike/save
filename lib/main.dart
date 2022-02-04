@@ -5,8 +5,10 @@ import 'package:save/pages/google_sheets_api.dart';
 import 'package:save/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:save/services/auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-void main(){
+Future main() async{
+  await DotEnv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   GoogleSheetsApi().init();
   runApp(MyApp());
