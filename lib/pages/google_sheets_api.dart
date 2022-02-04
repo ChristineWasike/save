@@ -6,8 +6,8 @@ class GoogleSheetsApi {
 {
   "type": "service_account",
   "project_id": "saveya",
-  "private_key_id": "682baeed764b44482ff946319a93831f386ed910",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDLsF9PYjLuJa6H\no6kuq8PAnE0ZgI3wd10DjsZjiwL045v6AjGXXeIQ7QADORnfBCHvLIYsbTBOwjOm\nxR8wk6TS12E1M+oEfaiiZvbMjyhbQV5UdHLxXIEaOxcSRzpKeCLoLBe6iJYL+r7J\nOu3aFCd9ah7hgt17JNwwd8iwUedU923BZwQKAisxPhNJ+3+QxmMzdMlA4Jq+Zfto\nQgMzLvt9jWBM/3qQiJ6ydMajo+4S4QumQxHZNvGdoCVxq0h09e958kuHvQMINvQh\nAdtzDqpIhsdAD2MJW3jyysQmAyGtEwaNUnd4QSwTEP5L4HXkbyOhl697da30Xxxr\n1VA/L+pxAgMBAAECgf8XVsjqT6uGSMsMFQn4Twt0W8nPIkEhTIwGhwA0Z7lEViWJ\nKrcuoOibsoxN0j0kpf89aIdMj+D5JUdwfyW+ayx3puDR4nZDYs1FI9x46UO2hnGd\n5mSamKmHrT2iL9x+AUX+qbljpkLgcdq/3qtiUZeKHJ7CjZF94BCwJ7Qsf+CshiO4\nJugKEwnkTwPMj/wJCkQfO9VCgk2l4XHNk1GAtTco7LToyEzCKLEhlV/xDntZjoE+\nVooH3EiiOb3jgqmeyfkiVlV8rSzjH5K8++BPVUkyLMy6BVkMdf0/D7rCdFgpAR5U\nxG5AnTgN2ON9ud2JX2anslulnSqGyt82RQwK+gECgYEA5n8rOahQfqw5giwRtYfu\n3gSlTWiAyv67lT7zKJs5qxoZU2sHbW3zka4Px+GKl0J10acW2pV6+NR8pWF1/m6Y\nFGl06GQ08tkvTeI6cRHBVHTg1S8vn5sikXfZ+QlAZvvwlrwmLUdoD1vSA8MstzNR\nUlwawB0ctD771wS3YlRuqskCgYEA4jnfDoeuFYq21f6xfv/mWCG4mnJ65abJl3et\ny12MIv9STlT5IpjCkzZawucP00RyUBq5v67KrqeaZ8sZNIVVxHaCB5TlMRUmilzT\ngf95lwbl+6bNqKRBTPHFXiD5GDyi6frlpDNducsINKwQojfELh7RL0dR4TW/yy6b\nqzBd7mkCgYAXUlCmUdBrMLPU5u6Xxnw1vJSZI3S8lU+XhzoFJseL92UOmqqyuMhH\nOixglgJ20YOoRda7IRrDKITAGv9cUgZTMmRgyxrMY4s0vyoYnKpKCFVjXJXd+U1j\nGJRWbUg141HxfnICbNIrk6fJN6tDkg6tXaJbQ9bOqfzDQbfoXBCieQKBgQCkqytK\nEEkPNSFRM0tP/kVU8XbGNX5vm7AxqNPArB9NejwW+JNAM6GuNmpqZHaIedIbrNh4\nRmsSJr2lv5hhOozrrLeJfUA3MgYTwO3UOnnvDP5q50fb8XP25iWcFrQ6iCit2AtA\nMoOOsdMPRA/3hFAwog3yNB/Npqos44g8W8CDwQKBgF6fuwuA1y+9svmcT3ZgqHnE\nzdW1jfF12igDF2zoIPlYQRBv8tjjoovmhEfnhqJrD7/dGimUfsRxWBYjH6J4NrCW\nTsMYrRV9yjVCNSryAQG0fhv4I4QpatF10CoK5OR5ziJfx3n0Mzf9lknKA1QSwjok\nS3WS+6dLuTZWI8lEcq2F\n-----END PRIVATE KEY-----\n",
+  "private_key_id": ${env['GOOGLE_SHEETS_KEY_ID']},
+  "private_key": ${env['GOOGLE_SHEETS_KEY']},
   "client_email": "saveya@saveya.iam.gserviceaccount.com",
   "client_id": "115240864495117452903",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
